@@ -9,7 +9,7 @@ const siteMetadata = {
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
   siteRepo: 'https://github.com/AmosChenZixuan/amoschenzixuan.github.io',
   siteLogo: '/static/images/logo-black.png',
-  socialBanner: '/static/images/qy.png',
+  socialBanner: '/static/images/qy.jpg',
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'zixuanchen1999@gmail.com',
   github: 'https://github.com/amoschenzixuan',
@@ -43,11 +43,11 @@ const siteMetadata = {
     //   googleAnalyticsId: '', // e.g. G-XXXXXXX
     // },
   },
-  // newsletter: {
-  //   // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
-  //   // Please add your .env file and modify it according to your selection
-  //   provider: 'buttondown',
-  // },
+  newsletter: {
+    // supports mailchimp, buttondown, convertkit, klaviyo, revue, emailoctopus
+    // Please add your .env file and modify it according to your selection
+    provider: null,
+  },
   comments: {
     // If you want to use an analytics provider you have to add it to the
     // content security policy in the `next.config.js` file.
