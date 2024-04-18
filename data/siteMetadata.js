@@ -2,8 +2,8 @@
 const siteMetadata = {
   title: 'Amos.me',
   author: 'Zixuan Chen (Amos)',
-  headerTitle: 'TailwindBlog',
-  description: 'A blog created with Next.js and Tailwind.css',
+  headerTitle: '',
+  description: 'Amos\' Secret Base',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
