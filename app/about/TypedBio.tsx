@@ -1,22 +1,22 @@
-"use client";
+'use client'
 
-import React from 'react';
-import Typed from 'typed.js';
+import React from 'react'
+import Typed from 'typed.js'
 
 const TypedBios = () => {
-const el = React.useRef(null);
-const typed = React.useRef<Typed | null>(null);
+  const el = React.useRef(null)
+  const typed = React.useRef<Typed | null>(null)
 
-React.useEffect(() => {
+  React.useEffect(() => {
     typed.current = new Typed(el.current, {
-        stringsElement: '#bios',
-        typeSpeed: 40,
-        backSpeed: 10,
-        loop: true,
-        backDelay: 1000,
-    });
-    return () => typed.current?.destroy();
-}, []);
+      stringsElement: '#bios',
+      typeSpeed: 40,
+      backSpeed: 10,
+      loop: true,
+      backDelay: 1000,
+    })
+    return () => typed.current?.destroy()
+  }, [])
 
   return (
     <div>
@@ -43,7 +43,7 @@ React.useEffect(() => {
       </ul>
       <span ref={el} className="text-neutral-900 dark:text-neutral-200" />
     </div>
-  );
-};
+  )
+}
 
-export default TypedBios;
+export default TypedBios
