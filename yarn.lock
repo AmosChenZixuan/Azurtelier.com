@@ -10904,6 +10904,7 @@ __metadata:
     remark-gfm: ^4.0.0
     remark-math: ^6.0.0
     tailwindcss: ^3.4.3
+    typed.js: ^2.1.0
     typescript: ^5.1.3
     unist-util-visit: ^5.0.0
   languageName: unknown
@@ -11184,6 +11185,13 @@ __metadata:
     is-typed-array: ^1.1.13
     possible-typed-array-names: ^1.0.0
   checksum: f0315e5b8f0168c29d390ff410ad13e4d511c78e6006df4a104576844812ee447fcc32daab1f3a76c9ef4f64eff808e134528b5b2439de335586b392e9750e5c
+  languageName: node
+  linkType: hard
+
+"typed.js@npm:^2.1.0":
+  version: 2.1.0
+  resolution: "typed.js@npm:2.1.0"
+  checksum: 688f8a13a2a93317c87bb499f9d4159a0df5e5f67960cddd96a11ae53362b78ab5597d32eb3b300d97ddbe71c1dd5dd817625687ccc8be810643f3922d92b64d
   languageName: node
   linkType: hard
 
