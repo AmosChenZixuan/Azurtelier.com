@@ -1,15 +1,15 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'Amos.me',
+  title: 'AzurOfficial',
   author: 'Zixuan Chen (Amos)',
   headerTitle: '',
-  description: 'Amos\' Secret Base',
+  description: '阿梓Official的秘密基地',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
   siteRepo: 'https://github.com/AmosChenZixuan/amoschenzixuan.github.io',
-  siteLogo: '/static/images/logo-black.png',
-  socialBanner: '/static/images/qy.jpg',
+  siteLogo: '/static/images/logo.png',
+  socialBanner: '/static/images/avatar.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'zixuanchen1999@gmail.com',
   github: 'https://github.com/amoschenzixuan',

@@ -19,7 +19,7 @@ export default function AuthorLayout({ children, content }: Props) {
             About
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">
-            the creator of this site.
+           目前可以公开的情报
           </p>
         </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
