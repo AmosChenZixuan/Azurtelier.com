@@ -21,7 +21,7 @@ export default function AuthorLayout({ children, content }: Props) {
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">目前可以公开的情报</p>
         </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-          <div className="flex flex-col items-center space-x-2 pt-8">
+          <div className="top-20 flex flex-col items-center space-x-2 pt-8 xl:sticky">
             {avatar && (
               <Image
                 src={avatar}
