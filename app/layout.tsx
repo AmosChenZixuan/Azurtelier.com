@@ -64,22 +64,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${space_grotesk.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/icon.png" />
-      <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/icon.png" />
-      <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/icon.png" />
-      <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
-      <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
-      <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
-      <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-      {/* font  */}
-      <link rel="stylesheet" href="https://use.typekit.net/ibm8byk.css" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap"
-        rel="stylesheet"
-      />
+      <head>
+        <link rel="apple-touch-icon" sizes="76x76" href="/static/favicons/icon.png" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/static/favicons/icon.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/static/favicons/icon.png" />
+        <link rel="mask-icon" href="/static/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+        <meta name="msapplication-TileColor" content="#000000" />
+        <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
+        <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
+        <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
+        {/* font  */}
+        <link rel="stylesheet" href="https://use.typekit.net/ibm8byk.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap"
+          rel="stylesheet"
+        />
+      </head>
       <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
