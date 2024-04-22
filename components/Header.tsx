@@ -9,7 +9,7 @@ import SearchButton from './SearchButton'
 const Header = () => {
   return (
     <header
-      className="fixed left-0 right-0 top-2 z-50 mx-auto max-w-6xl
+      className="fixed left-0 right-0 top-2 z-50 mx-auto max-w-5xl
     rounded-full bg-white/30 px-8
     py-2 shadow-md backdrop-blur dark:bg-black/30 dark:shadow-gray-800"
     >
