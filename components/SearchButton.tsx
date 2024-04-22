@@ -16,9 +16,9 @@ const SearchButton = () => {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={1.5}
+          strokeWidth={4}
           stroke="currentColor"
-          className="h-6 w-6 text-gray-900 dark:text-gray-100"
+          className="mb-1 h-5 w-5 text-gray-900 dark:text-gray-100"
         >
           <path
             strokeLinecap="round"
