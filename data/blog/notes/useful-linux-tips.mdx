@@ -1,0 +1,28 @@
+---
+title: Useful Linux Tips
+date: '2024-01-26'
+tags: ['English', 'Linux', 'note', 'guide']
+draft: false
+summary: Instruction on how to install Microsoft Edge on a linux machine
+---
+
+# Make sudo Remember password for longer
+
+```
+sudo visudo
+```
+
+add ```Defaults        timestamp_timeout=300``` at the end
+
+
+# Auto mount drive on booting the machine
+
+```
+sudo vim /etc/fstab
+```
+
+add ```/dev/{drive_name}      /media/path/to/mount   ext4   defaults   0   0```
+
+#
+#
+# To Be Continued...

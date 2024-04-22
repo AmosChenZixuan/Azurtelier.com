@@ -1,0 +1,17 @@
+---
+title: WSL Troubleshooting
+date: '2024-01-24'
+tags: ['English', 'WSL', 'note', 'guide']
+draft: false
+summary: Notes taken from solving bugs related to windos sub-system linux
+---
+
+# Unable to resolve host in wsl 
+
+networking - Bash on Ubuntu on Windows - could not resolve host using VPN - Super User 
+
+``` 
+Get-DnsClientServerAddress -AddressFamily IPv4 | Select-Object -ExpandPropert ServerAddresses 
+``` 
+
+Add results to /etc/resolv.conf as nameservers 
