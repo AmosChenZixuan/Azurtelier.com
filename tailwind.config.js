@@ -22,7 +22,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-space-grotesk)', ...fontFamily.sans],
+        sans: ['pangolin', 'ZCOOL KuaiLe', 'var(--font-space-grotesk)', ...fontFamily.sans],
       },
       colors: {
         primary: colors.violet,
