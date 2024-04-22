@@ -16,7 +16,7 @@ const SearchButton = () => {
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
-          strokeWidth={4}
+          strokeWidth={2}
           stroke="currentColor"
           className="mb-1 h-5 w-5 text-gray-900 dark:text-gray-100"
         >
