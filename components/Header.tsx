@@ -16,8 +16,8 @@ const Header = () => {
   return (
     <header
       className="fixed left-0 right-0 top-2 z-50 mx-auto max-w-5xl
-    rounded-full bg-white/30 px-8
-    py-2 shadow-md backdrop-blur dark:bg-black/30 dark:shadow-gray-800"
+    rounded-md bg-white/30 py-2 pl-2
+    pr-4 shadow-md backdrop-blur dark:bg-black/30 dark:shadow-gray-800"
     >
       <div className="mx-auto flex max-w-4xl items-center justify-between px-3 xl:max-w-5xl xl:px-0">
         <Link href="/" aria-label={siteMetadata.headerTitle} className="flex items-center">

@@ -14,8 +14,8 @@ export default function Projects() {
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">{t('desc_projects')}</p>
         </div>
-        <div className="container py-12">
-          <div className="-m-6 flex flex-wrap">
+        <div className="container mx-auto max-w-5xl py-12">
+          <div className="-m-4 flex flex-wrap">
             {projectsData.map((d) => (
               <Card
                 key={d.title}

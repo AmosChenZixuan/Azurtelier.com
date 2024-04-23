@@ -57,7 +57,7 @@ const ThemeSwitch = () => {
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 20 20"
         fill="currentColor"
-        className="mb-1 h-5 w-5 text-gray-900 dark:text-gray-100"
+        className="h-5 w-5 text-gray-900 dark:text-gray-100"
       >
         {mounted && (theme === 'dark' || resolvedTheme === 'dark') ? Sun() : Moon()}
       </svg>
