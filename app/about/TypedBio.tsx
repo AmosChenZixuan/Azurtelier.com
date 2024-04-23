@@ -2,10 +2,13 @@
 
 import React from 'react'
 import Typed from 'typed.js'
+import { useTranslation, LanguageContext } from 'utils/locale'
 
 const TypedBios = () => {
   const el = React.useRef(null)
   const typed = React.useRef<Typed | null>(null)
+  const { currentLang } = React.useContext(LanguageContext)
+  const { t } = useTranslation('about-me')
 
   React.useEffect(() => {
     typed.current = new Typed(el.current, {
@@ -16,29 +19,31 @@ const TypedBios = () => {
       backDelay: 1000,
     })
     return () => typed.current?.destroy()
-  }, [])
+  }, [currentLang])
 
   return (
     <div>
       <span>👋 </span>
       <ul id="bios" className="hidden">
         <li>
-          I'm aliased as <b className="text-primary-500">Amos</b> at work.
+          {t('typed.Iam')} {t('typed.alias.1')}{' '}
+          <b className="text-primary-300">{t('typed.alias.2')}</b> {t('typed.alias.3')}.
         </li>
         <li>
-          I'm a <b className="text-primary-500">Software</b> Engineer.
+          {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.swe')}</b>.
         </li>
         <li>
-          I'm a <b className="text-primary-500">Machine Learning</b> Engineer.
+          {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.mle')}</b>.
         </li>
         <li>
-          I'm a PC <b className="text-primary-500">Gamer</b>.
+          {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.gamer')}</b>.
         </li>
         <li>
-          I'm a <b className="text-primary-500">Anime</b> Fan.
+          {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.anime')}</b>.
         </li>
         <li>
-          I'm a <b className="text-primary-500">cat</b>-person
+          {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.pet1')}</b>
+          {t('typed.pet2')}.
         </li>
       </ul>
       <span ref={el} className="text-neutral-900 dark:text-neutral-200" />
