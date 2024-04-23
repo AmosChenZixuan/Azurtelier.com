@@ -1,6 +1,6 @@
 'use client'
 import siteMetadata from '@/data/siteMetadata'
-import headerNavLinks from '@/data/headerNavLinks'
+import useHeaderNavLinks from '@/data/headerNavLinks'
 import Image from 'next/image'
 import Link from './Link'
 import MobileNav from './MobileNav'
@@ -8,8 +8,11 @@ import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 
 import LocaleSwitch from './LocaleSwitch'
+import { useTranslation } from "utils/locale"
 
 const Header = () => {
+  const {t} = useTranslation()
+
   return (
     <header
       className="fixed left-0 right-0 top-2 z-50 mx-auto max-w-5xl
@@ -32,7 +35,7 @@ const Header = () => {
           </div>
         </Link>
         <div className="flex items-center space-x-4 leading-5 sm:space-x-6">
-          {headerNavLinks
+          {useHeaderNavLinks(t)
             .filter((link) => link.href !== '/')
             .map((link) => (
               <Link
