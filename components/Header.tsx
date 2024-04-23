@@ -1,3 +1,4 @@
+'use client'
 import siteMetadata from '@/data/siteMetadata'
 import headerNavLinks from '@/data/headerNavLinks'
 import Image from 'next/image'
@@ -5,8 +6,12 @@ import Link from './Link'
 import MobileNav from './MobileNav'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
+import { useChangeLang } from 'utils/locale'
+import LocaleSwitch from './LocaleSwitch'
 
 const Header = () => {
+  const changeLang = useChangeLang()
+
   return (
     <header
       className="fixed left-0 right-0 top-2 z-50 mx-auto max-w-5xl
@@ -44,6 +49,7 @@ const Header = () => {
             ))}
           <SearchButton />
           <ThemeSwitch />
+          <LocaleSwitch />
           <MobileNav />
         </div>
       </div>
