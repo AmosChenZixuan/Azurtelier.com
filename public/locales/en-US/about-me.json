@@ -1,0 +1,17 @@
+{
+  "typed": {
+    "Iam": "I'm",
+    "Iam-a": "I'm a",
+    "alias": {
+      "1": "aliased as",
+      "2": "Amos",
+      "3": "at work"
+    },
+    "swe": "Software Engineer",
+    "mle": "Machine Learning Engineer",
+    "gamer": "PC Gamer",
+    "anime": "Anime Enthusiast",
+    "pet1": "cat",
+    "pet2": "-person"
+  }
+}

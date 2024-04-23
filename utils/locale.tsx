@@ -37,10 +37,11 @@ export function useTranslation(lang_pack: string = defaultLangPack) {
       const value = key
         .split('.')
         .reduce(
-          (previous, current) => (previous && previous[current]) || null,
+          (previous, current) =>
+            (previous && previous[current]) !== undefined ? previous[current] : undefined,
           translations[currentLang]
         )
-      const translation = value || key
+      const translation = value !== null && value !== undefined ? value : key
       return translation
     },
   }

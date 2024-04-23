@@ -1,4 +1,4 @@
-const defaultLang = 'zh'
+const defaultLang = 'en'
 const defaultLangPack = 'strings'
 
 const useLanguages = (lang_pack = defaultLangPack) => {
