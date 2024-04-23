@@ -20,11 +20,6 @@ export default function BlogPage() {
   }
 
   return (
-    <ListLayout
-      posts={posts}
-      initialDisplayPosts={initialDisplayPosts}
-      pagination={pagination}
-      title="All Posts"
-    />
+    <ListLayout posts={posts} initialDisplayPosts={initialDisplayPosts} pagination={pagination} />
   )
 }

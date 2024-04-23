@@ -10,6 +10,7 @@ import Link from '@/components/Link'
 import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import tagData from 'app/tag-data.json'
+import { useTranslation } from 'utils/locale'
 
 interface PaginationProps {
   totalPages: number
@@ -27,13 +28,14 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
   const basePath = pathname.split('/')[1]
   const prevPage = currentPage - 1 > 0
   const nextPage = currentPage + 1 <= totalPages
+  const { t } = useTranslation()
 
   return (
     <div className="space-y-2 pb-8 pt-6 md:space-y-5">
       <nav className="flex justify-between">
         {!prevPage && (
           <button className="cursor-auto disabled:opacity-50" disabled={!prevPage}>
-            Previous
+            {t('btn_prev')}
           </button>
         )}
         {prevPage && (
@@ -41,7 +43,7 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
             href={currentPage - 1 === 1 ? `/${basePath}/` : `/${basePath}/page/${currentPage - 1}`}
             rel="prev"
           >
-            Previous
+            {t('btn_prev')}
           </Link>
         )}
         <span>
@@ -49,12 +51,12 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
         </span>
         {!nextPage && (
           <button className="cursor-auto disabled:opacity-50" disabled={!nextPage}>
-            Next
+            {t('btn_next')}
           </button>
         )}
         {nextPage && (
           <Link href={`/${basePath}/page/${currentPage + 1}`} rel="next">
-            Next
+            {t('btn_next')}
           </Link>
         )}
       </nav>
@@ -64,7 +66,6 @@ function Pagination({ totalPages, currentPage }: PaginationProps) {
 
 export default function ListLayoutWithTags({
   posts,
-  title,
   initialDisplayPosts = [],
   pagination,
 }: ListLayoutProps) {
@@ -74,26 +75,27 @@ export default function ListLayoutWithTags({
   const sortedTags = tagKeys.sort((a, b) => tagCounts[b] - tagCounts[a])
 
   const displayPosts = initialDisplayPosts.length > 0 ? initialDisplayPosts : posts
+  const { t } = useTranslation()
 
   return (
     <>
       <div>
         <div className="pb-6 pt-6">
           <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:hidden sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
-            {title}
+            {t('blog_title')}
           </h1>
         </div>
         <div className="flex sm:space-x-24">
           <div className="hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto rounded bg-gray-50 pt-5 shadow-md dark:bg-gray-900/70 dark:shadow-gray-800/40 sm:flex">
             <div className="px-6 py-4">
               {pathname.startsWith('/blog') ? (
-                <h3 className="font-bold uppercase text-primary-500">All Posts</h3>
+                <h3 className="font-bold uppercase text-primary-500">{t('blog_title')}</h3>
               ) : (
                 <Link
                   href={`/blog`}
                   className="font-bold uppercase text-gray-700 hover:text-primary-500 dark:text-gray-300 dark:hover:text-primary-500"
                 >
-                  All Posts
+                  {t('blog_title')}
                 </Link>
               )}
               <ul>

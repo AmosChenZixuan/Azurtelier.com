@@ -2,5 +2,13 @@
   "menu_blog": "Blog",
   "menu_tag": "Tags",
   "menu_projects": "Projects",
-  "menu_about": "About"
+  "menu_about": "About",
+  "desc_projects": "Collection of my past projects",
+  "desc_about": "Now you know about me",
+  "home_title": "Latest",
+  "home_desc": "Secret Base of AzurOffical",
+  "label_read_more": "Read more",
+  "blog_title": "All Posts",
+  "btn_prev": "Previous",
+  "btn_next": "Next"
 }

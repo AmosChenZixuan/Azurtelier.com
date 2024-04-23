@@ -1,1 +1,11 @@
-{"中文":1,"photos":1,"landscape":1,"portrait":1,"english":2,"linux":2,"note":2,"guide":2}
+{
+  "chinese": 1,
+  "photos": 1,
+  "landscape": 1,
+  "travel": 1,
+  "english": 3,
+  "linux": 2,
+  "note": 3,
+  "guide": 3,
+  "wsl": 1
+}
