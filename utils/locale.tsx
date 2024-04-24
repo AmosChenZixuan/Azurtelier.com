@@ -46,12 +46,3 @@ export function useTranslation(lang_pack: string = defaultLangPack) {
     },
   }
 }
-
-export function useChangeLang() {
-  const { currentLang, setCurrentLang } = useContext(LanguageContext)
-  return (newLang: string) => {
-    if (currentLang !== newLang) {
-      setCurrentLang(newLang)
-    }
-  }
-}
