@@ -41,8 +41,8 @@ const Header = () => {
               <Link
                 key={link.title}
                 href={link.href}
-                className="hidden font-medium text-gray-900 transition duration-300
-              hover:text-primary-500 dark:text-gray-100
+                className="hidden font-medium
+              text-gray-900 transition duration-300 hover:text-primary-500 dark:text-gray-100
               dark:hover:text-primary-500 sm:block"
               >
                 {link.title}
@@ -53,6 +53,7 @@ const Header = () => {
           <LocaleSwitch />
           <MobileNav />
         </div>
+        {/* <div className="absolute inset-x-0 middle-y-0 border-t border-gray-300"></div> */}
       </div>
     </header>
   )
