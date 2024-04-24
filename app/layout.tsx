@@ -1,7 +1,7 @@
 import 'css/tailwind.css'
 import 'pliny/search/algolia.css'
 
-import { Space_Grotesk } from 'next/font/google'
+import { Pangolin, ZCOOL_KuaiLe } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -12,10 +12,18 @@ import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import { LanguageProvider } from 'utils/locale'
 
-const space_grotesk = Space_Grotesk({
+const pangolin = Pangolin({
   subsets: ['latin'],
   display: 'swap',
-  variable: '--font-space-grotesk',
+  variable: '--font-pangolin',
+  weight: '400',
+})
+
+const zcool_kuaile = ZCOOL_KuaiLe({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-zcool-kuaile',
+  weight: '400',
 })
 
 export const metadata: Metadata = {
@@ -62,7 +70,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${space_grotesk.variable} scroll-smooth`}
+      className={`${pangolin.variable} ${zcool_kuaile.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <head>
@@ -74,16 +82,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <meta name="theme-color" media="(prefers-color-scheme: light)" content="#fff" />
         <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
-        {/* font  */}
-        <link rel="stylesheet" href="https://use.typekit.net/ibm8byk.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&display=swap"
-          rel="stylesheet"
-        />
       </head>
-      <body className="bg-white pl-[calc(100vw-100%)] text-black antialiased dark:bg-gray-950 dark:text-white">
+      <body className="bg-white text-black antialiased dark:bg-gray-950 dark:text-white">
         <ThemeProviders>
           <LanguageProvider>
             <Analytics analyticsConfig={siteMetadata.analytics as AnalyticsConfig} />
