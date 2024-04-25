@@ -2,6 +2,7 @@
 const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
+const fonts = ['var(--font-pangolin)', 'var(--font-zcool-kuaile)', ...fontFamily.sans]
 /** @type {import("tailwindcss/types").Config } */
 module.exports = {
   content: [
@@ -22,7 +23,7 @@ module.exports = {
         14: '3.5rem',
       },
       fontFamily: {
-        sans: ['var(--font-pangolin)', 'var(--font-zcool-kuaile)', ...fontFamily.sans],
+        sans: fonts,
       },
       colors: {
         primary: colors.violet,
@@ -46,7 +47,31 @@ module.exports = {
               fontWeight: '600',
             },
             code: {
-              color: theme('colors.indigo.500'),
+              color: theme('colors.primary.300'),
+              backgroundColor: theme('colors.gray.800'),
+              paddingLeft: '4px',
+              paddingRight: '4px',
+              paddingTop: '2px',
+              paddingBottom: '2px',
+              borderRadius: '0.25rem',
+              font: fonts,
+            },
+            'code::before': {
+              content: 'none',
+            },
+            'code::after': {
+              content: 'none',
+            },
+            s: {
+              textDecoration: 'none', // remove strikethrough
+              color: 'transparent',
+              backgroundColor: theme('colors.gray.800'),
+              borderRadius: '0.25rem',
+              transition: 'all 0.5s ease',
+              '&:hover': {
+                color: theme('colors.gray.400'),
+                backgroundColor: 'transparent',
+              },
             },
           },
         },
@@ -61,6 +86,9 @@ module.exports = {
             },
             'h1,h2,h3,h4,h5,h6': {
               color: theme('colors.gray.100'),
+            },
+            pre: {
+              backgroundColor: theme('colors.gray.800'),
             },
           },
         },
