@@ -46,14 +46,14 @@ module.exports = {
               fontWeight: '600',
             },
             code: {
-              color: theme('colors.primary.500'),
-              backgroundColor: theme('colors.gray.300'),
+              color: theme('colors.primary.300'),
+              backgroundColor: theme('colors.gray.800'),
               paddingLeft: '4px',
               paddingRight: '4px',
               paddingTop: '2px',
               paddingBottom: '2px',
               borderRadius: '0.25rem',
-              font: 'sans-serif'
+              font: 'sans-serif',
             },
             'code::before': {
               content: 'none',
@@ -74,6 +74,9 @@ module.exports = {
             },
             'h1,h2,h3,h4,h5,h6': {
               color: theme('colors.gray.100'),
+            },
+            pre: {
+              backgroundColor: theme('colors.gray.800'),
             },
           },
         },
