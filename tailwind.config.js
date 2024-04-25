@@ -46,7 +46,20 @@ module.exports = {
               fontWeight: '600',
             },
             code: {
-              color: theme('colors.indigo.500'),
+              color: theme('colors.primary.500'),
+              backgroundColor: theme('colors.gray.300'),
+              paddingLeft: '4px',
+              paddingRight: '4px',
+              paddingTop: '2px',
+              paddingBottom: '2px',
+              borderRadius: '0.25rem',
+              font: 'sans-serif'
+            },
+            'code::before': {
+              content: 'none',
+            },
+            'code::after': {
+              content: 'none',
             },
           },
         },
