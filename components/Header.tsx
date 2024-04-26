@@ -14,18 +14,32 @@ import { useTranslation } from 'utils/locale'
 
 const Header = () => {
   const { t } = useTranslation()
-  const [isScrolled, setIsScrolled] = useState(true)
+  const [lastScrollTop, setLastScrollTop] = useState(0)
+  const [headerVisible, setHeaderVisible] = useState(true)
+  const [isScrolled, setScrolled] = useState(false)
+  const triggerHeight = 100
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY >= 100)
+      const scrollTop = window.scrollY || document.documentElement.scrollTop
+      if (scrollTop > lastScrollTop) {
+        setHeaderVisible(false)
+      } else {
+        setHeaderVisible(true)
+      }
+      setLastScrollTop(scrollTop <= 0 ? 0 : scrollTop)
+      setScrolled(scrollTop > triggerHeight)
     }
 
     window.addEventListener('scroll', handleScroll)
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
-  }, [])
+  }, [lastScrollTop])
+
+  function isVisible() {
+    return !isScrolled || headerVisible
+  }
 
   return (
     <motion.header
@@ -33,7 +47,10 @@ const Header = () => {
         rounded-md bg-white/30 py-2 pl-2
         pr-4 ${isScrolled ? 'shadow-md' : ''} backdrop-blur dark:bg-black/30 dark:shadow-gray-800`}
       initial={{ width: '100vw' }}
-      animate={{ width: isScrolled ? '80vw' : '100vw' }}
+      animate={{
+        width: isScrolled ? '80vw' : '100vw',
+        top: isVisible() ? '' : '-60px',
+      }}
       transition={{ duration: 0.5 }}
     >
       <div className="flex items-center justify-between px-3">
