@@ -4,12 +4,14 @@ import Tag from '@/components/Tag'
 import siteMetadata from '@/data/siteMetadata'
 import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
-import { useTranslation } from 'utils/locale'
+import { useTranslation, LanguageContext } from 'utils/locale'
+import { useContext } from 'react'
 
 const MAX_DISPLAY = 5
 
 export default function Home({ posts }) {
   const { t } = useTranslation()
+  const currentLang = useContext(LanguageContext).currentLang
 
   return (
     <>
@@ -31,7 +33,7 @@ export default function Home({ posts }) {
                     <dl>
                       <dt className="sr-only">Published on</dt>
                       <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                        <time dateTime={date}>{formatDate(date, siteMetadata.locale)}</time>
+                        <time dateTime={date}>{formatDate(date, currentLang)}</time>
                       </dd>
                     </dl>
                     <div className="space-y-5 xl:col-span-3">
