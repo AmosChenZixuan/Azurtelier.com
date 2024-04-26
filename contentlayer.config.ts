@@ -73,7 +73,14 @@ function createTagCount(allBlogs) {
       })
     }
   })
-  writeFileSync('./app/tag-data.json', JSON.stringify(tagCount))
+  // sorted by key
+  const orderedTagCount = Object.keys(tagCount)
+    .sort()
+    .reduce((obj, key) => {
+      obj[key] = tagCount[key]
+      return obj
+    }, {})
+  writeFileSync('./app/tag-data.json', JSON.stringify(orderedTagCount))
 }
 
 function createSearchIndex(allBlogs) {
