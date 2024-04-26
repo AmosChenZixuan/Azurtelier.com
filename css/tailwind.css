@@ -53,3 +53,8 @@ input:-webkit-autofill:focus {
 body {
   @apply transition-colors duration-1000;
 }
+
+@font-face {
+  font-family: 'zzz-cipher';
+  src: url('/static/fonts/ZZZNeue-VariantA-0.003.otf') format('opentype');
+}
