@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'zzz-a';
+  src: url('/static/fonts/ZZZNeue-VariantA-0.003.otf') format('opentype');
+  size-adjust: 75%;
+}
+
+@font-face {
+  font-family: 'zzz-b';
+  src: url('/static/fonts/ZZZNeue-VariantB-0.003.otf') format('opentype');
+  size-adjust: 75%;
+}
+
+@font-face {
+  font-family: 'teyvat';
+  src: url('/static/fonts/TeyvatBlack-Regular.otf') format('opentype');
+  size-adjust: 70%;
+}
+
+@font-face {
+  font-family: 'hsr';
+  src: url('/static/fonts/StarRailNeue-Sans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'fontaine';
+  src: url('/static/fonts/FonteAinee-Regular.ttf') format('truetype');
+  size-adjust: 70%;
+}

@@ -1,11 +1,13 @@
-![banner](public/static/images/banner.PNG)
+![banner](public/static/images/banner.png)
+
 # AmosChenZixuan Personal Blog
 
-Based off the [__Tailwind Nextjs Starter Blog__](https://github.com/timlrx/tailwind-nextjs-starter-blog)
+Based off the [**Tailwind Nextjs Starter Blog**](https://github.com/timlrx/tailwind-nextjs-starter-blog)
 
 This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com/) project which is based on Next App directory with [React Server Component](https://nextjs.org/docs/getting-started/react-essentials#server-components) and uses [Contentlayer](https://www.contentlayer.dev/) to manage markdown content.
 
 ## Addtional Features by Me
+
 - Internationalization. Support English and Chinese.
 - Customized Font: EN - Pangolin, ZH - ZCOOL KuaiLe
 - Static Deployment on Github pages
@@ -40,7 +42,9 @@ This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com
 - SEO friendly with RSS feed, sitemaps and more!
 
 ## Installation
+
 #### Prerequisite: Node and Yarn
+
 ```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
 nvm install 18
@@ -48,7 +52,6 @@ nvm use 18
 
 npm i --global yarn
 ```
-
 
 ```bash
 yarn

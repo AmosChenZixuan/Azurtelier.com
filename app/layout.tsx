@@ -1,4 +1,5 @@
 import 'css/tailwind.css'
+import 'css/fonts.css'
 import 'pliny/search/algolia.css'
 
 import { Pangolin, ZCOOL_KuaiLe } from 'next/font/google'

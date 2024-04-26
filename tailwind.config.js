@@ -2,7 +2,7 @@
 const { fontFamily } = require('tailwindcss/defaultTheme')
 const colors = require('tailwindcss/colors')
 
-const fonts = ['var(--font-pangolin)', 'var(--font-zcool-kuaile)', 'zzz-cipher', ...fontFamily.sans]
+const fonts = ['var(--font-pangolin)', 'var(--font-zcool-kuaile)', ...fontFamily.sans]
 /** @type {import("tailwindcss/types").Config } */
 module.exports = {
   content: [
@@ -24,6 +24,11 @@ module.exports = {
       },
       fontFamily: {
         sans: fonts,
+        zzz: ['zzz-a', ...fonts],
+        zzz2: ['zzz-b', ...fonts],
+        teyvat: ['teyvat', ...fonts],
+        starrail: ['hsr', ...fonts],
+        fontaine: ['fontaine', ...fonts],
       },
       colors: {
         primary: colors.violet,
