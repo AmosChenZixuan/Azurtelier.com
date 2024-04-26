@@ -5769,6 +5769,26 @@ __metadata:
   languageName: node
   linkType: hard
 
+"framer-motion@npm:^11.1.7":
+  version: 11.1.7
+  resolution: "framer-motion@npm:11.1.7"
+  dependencies:
+    tslib: ^2.4.0
+  peerDependencies:
+    "@emotion/is-prop-valid": "*"
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  peerDependenciesMeta:
+    "@emotion/is-prop-valid":
+      optional: true
+    react:
+      optional: true
+    react-dom:
+      optional: true
+  checksum: ba4f2f0823eec7b78fa87180545cf8c832929ce52de8bab34312a67bfd6dee4ab6ad17143b9df2efcd4ede7cb87fc326843a1101a6cad3031c89a6ad2160e037
+  languageName: node
+  linkType: hard
+
 "fs-minipass@npm:^2.0.0":
   version: 2.1.0
   resolution: "fs-minipass@npm:2.1.0"
@@ -10878,6 +10898,7 @@ __metadata:
     eslint-config-next: 14.2.1
     eslint-config-prettier: ^8.8.0
     eslint-plugin-prettier: ^5.0.0
+    framer-motion: ^11.1.7
     github-slugger: ^2.0.0
     gray-matter: ^4.0.2
     hast-util-from-html-isomorphic: ^2.0.0

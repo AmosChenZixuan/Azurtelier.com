@@ -19,6 +19,7 @@
     "autoprefixer": "^10.4.13",
     "contentlayer2": "0.4.4",
     "esbuild": "0.20.2",
+    "framer-motion": "^11.1.7",
     "github-slugger": "^2.0.0",
     "gray-matter": "^4.0.2",
     "hast-util-from-html-isomorphic": "^2.0.0",
