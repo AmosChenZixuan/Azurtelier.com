@@ -1,0 +1,120 @@
+---
+title: How to Use Custom Fonts in TailwindCSS + NextJS
+date: '2024-04-26'
+tags: ['English', 'React', 'Tailwind', 'guide']
+draft: false
+summary: A guide on how to add custom fonts to a React application using Tailwind CSS.
+---
+
+<div className="grid grid-cols-3 gap-3">
+  <b className="font-mono text-4xl"> Hello </b>
+  <b className="font-zzz text-4xl"> Hello </b>
+  <b className="font-zzz2 text-4xl"> Hello </b>
+  <b className="font-starrail text-4xl"> Hello </b>
+  <b className="font-teyvat text-4xl"> Hello </b>
+  <b className="font-fontaine text-4xl"> Hello </b>
+</div>
+--- # Introduction
+
+This blog post provides a comprehensive guide on incorporating custom fonts into a React application utilizing Tailwind CSS.
+Tailwind CSS, a utility-first CSS framework, offers extensive customization options and seamlessly integrates with contemporary JavaScript frameworks such as React.
+We'll delve into various methods of adding custom fonts, enhancing the aesthetics and user experience of your React application.
+
+# Google Font of NextJS
+
+If you are using Next.js, you should consider the its build-in CSS feature, `next/font`, which simplifies the process of adding custom fonts to your application, and comes with automatic optimization.
+Here's how you can use it with Google Fonts:
+
+1. First, import your favorite font from Google Fonts. You could either go to the Website, or look up in the index file of the `@next/font/google` module
+
+```
+import { Pangolin } from 'next/font/google'
+
+const pangolin = Pangolin({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-pangolin',
+  weight: '400',
+})
+
+```
+
+2. add it to the classNames of the root component. For example: `app/layout.tsx`
+
+```
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html
+      lang={siteMetadata.language}
+      className={`${pangolin.variable} ${zcool_kuaile.variable} scroll-smooth`}
+      suppressHydrationWarning
+    >
+
+    ...
+
+    </html>
+  )
+}
+```
+
+3. add it to the tailwind's font families. In your `tailwind.config.js`
+
+#### update tailwind config
+
+```
+module.exports = {
+  // existing config...
+  theme: {
+    extend: {
+      fontFamily: {
+        'pangolin': ['var(--font-pangolin)', ...fontFamily.sans],
+        // other existing fontFamily configurations...
+      },
+      // other existing configurations...
+    },
+  },
+  // existing config...
+}
+```
+
+We are passing an array here because of fallback mechanism. In case the browser doesn't support our font, it automatically choose the next font in the list.
+The three dots in `...fontFamily.sans` expand the array of sans font family to our font array.
+
+4. Now, you can use `font-pangolin` as a className in any textual element.
+
+```
+<p className="font-pangolin"> Hello </p>
+```
+
+<p className="font-sans"> Hello </p>
+
+# Local font
+
+1. Download your favorite font from the internet. In this guide, I will use one of the constructed scripts by HoYoverse.
+
+   - Download a font from [HoYo-Glyphs](https://github.com/SpeedyOrc-C/HoYo-Glyphs)
+   - put it somewhere under the `static` folder.
+
+2. add the font in any of the css file you are currently using
+   - make sure the format is matching the font file. For example, `.tff` stands for truetype and `.otf` stands for opentype, etc.
+
+```
+@font-face {
+  font-family: 'hsr';
+  src: url('/static/fonts/StarRailNeue-Sans-Regular.ttf') format('truetype');
+}
+```
+
+3. add it to `tailwind.config.js`, see [step 3 of last section](#update-tailwind-config)
+
+4. use it as a className
+
+```
+<p className="font-hsr"> aaron abduct accidental adjacent afghan after aint anaheim and anybody although allotted ambidextrous amend announced aqua arrangement ask aspin ate attitude authorised avery award axolotl ello </p>
+```
+
+<p className="font-starrail">
+  {' '}
+  aaron abduct accidental adjacent afghan after aint anaheim and anybody although allotted ambidextrous
+  amend announced aqua arrangement ask aspin ate attitude authorised avery award axolotl ello{' '}
+</p>
