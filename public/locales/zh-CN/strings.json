@@ -10,5 +10,11 @@
   "label_read_more": "让我康康",
   "blog_title": "文章",
   "btn_prev": "上一页",
-  "btn_next": "下一页"
+  "btn_next": "下一页",
+  "label_learn_more": "让我康康",
+
+  "footer": {
+    "desc": "基于Nextjs和Tailwind开发🤍",
+    "view_source": "查看源码"
+  }
 }

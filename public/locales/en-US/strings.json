@@ -3,12 +3,18 @@
   "menu_tag": "Tags",
   "menu_projects": "Projects",
   "menu_about": "About",
-  "desc_projects": "Collection of my past projects",
+  "desc_projects": "Fun stuff built with 🤍",
   "desc_about": "Now you know about me",
   "home_title": "Latest",
   "home_desc": "Secret Base of AzurOffical",
   "label_read_more": "Read more",
   "blog_title": "All Posts",
   "btn_prev": "Previous",
-  "btn_next": "Next"
+  "btn_next": "Next",
+  "label_learn_more": "Learn more",
+
+  "footer": {
+    "desc": "Made with 🤍 using Nextjs and Tailwind",
+    "view_source": "View Source"
+  }
 }

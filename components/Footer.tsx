@@ -1,8 +1,12 @@
+'use client'
 import Link from './Link'
 import siteMetadata from '@/data/siteMetadata'
 import SocialIcon from '@/components/social-icons'
+import { useTranslation } from 'utils/locale'
 
 export default function Footer() {
+  const { t } = useTranslation()
+
   return (
     <footer>
       <div className="mt-16 flex flex-col items-center">
@@ -24,9 +28,9 @@ export default function Footer() {
           <Link href="/">{siteMetadata.title}</Link>
         </div>
         <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
-          <span>Built with Nextjs and Tailwind - </span>
+          <span>{t('footer.desc')} - </span>
           <Link href={siteMetadata.siteRepo} className="underline hover:text-primary-400">
-            View Source
+            {t('footer.view_source')}
           </Link>
         </div>
       </div>
