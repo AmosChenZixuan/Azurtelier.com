@@ -2400,6 +2400,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@motionone/types@npm:^10.17.0":
+  version: 10.17.0
+  resolution: "@motionone/types@npm:10.17.0"
+  checksum: 3996c84e1578b17146c14bd581ab682b7b2a06ca7fd5a7dc378a0f3b10539256d7b803a7df748f0c60d6df6b33950269a27ba2bb1839de779196bd024bee4b87
+  languageName: node
+  linkType: hard
+
+"@motionone/utils@npm:^10.17.0":
+  version: 10.17.0
+  resolution: "@motionone/utils@npm:10.17.0"
+  dependencies:
+    "@motionone/types": ^10.17.0
+    hey-listen: ^1.0.8
+    tslib: ^2.3.1
+  checksum: 408e278c9051a221e528bb9ca0a773018b9953ecd53bb88715421afc009f4647417b0d9f163c8195467badd934f39ade24f57e007416988e4291242e749ea43d
+  languageName: node
+  linkType: hard
+
 "@next/bundle-analyzer@npm:14.2.1":
   version: 14.2.1
   resolution: "@next/bundle-analyzer@npm:14.2.1"
@@ -6523,6 +6541,13 @@ __metadata:
     property-information: ^6.0.0
     space-separated-tokens: ^2.0.0
   checksum: ae3c20223e7b847320c0f98b6fb3c763ebe1bf3913c5805fbc176cf84553a9db1117ca34cf842a5235890b4b9ae0e94501bfdc9a9b870a5dbf5fc52426db1097
+  languageName: node
+  linkType: hard
+
+"hey-listen@npm:^1.0.8":
+  version: 1.0.8
+  resolution: "hey-listen@npm:1.0.8"
+  checksum: 6bad60b367688f5348e25e7ca3276a74b59ac5a09b0455e6ff8ab7d4a9e38cd2116c708a7dcd8a954d27253ce1d8717ec891d175723ea739885b828cf44e4072
   languageName: node
   linkType: hard
 
@@ -10899,6 +10924,7 @@ __metadata:
   dependencies:
     "@emotion/is-prop-valid": ^1.2.2
     "@headlessui/react": 1.7.19
+    "@motionone/utils": ^10.17.0
     "@next/bundle-analyzer": 14.2.1
     "@svgr/webpack": ^8.0.1
     "@tailwindcss/forms": ^0.5.7
@@ -11130,7 +11156,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:^2.0.3, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.6.2":
+"tslib@npm:^2.0.3, tslib@npm:^2.3.1, tslib@npm:^2.4.0, tslib@npm:^2.4.1, tslib@npm:^2.6.2":
   version: 2.6.2
   resolution: "tslib@npm:2.6.2"
   checksum: 329ea56123005922f39642318e3d1f0f8265d1e7fcb92c633e0809521da75eeaca28d2cf96d7248229deb40e5c19adf408259f4b9640afd20d13aecc1430f3ad
