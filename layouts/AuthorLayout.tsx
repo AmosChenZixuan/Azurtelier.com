@@ -1,9 +1,11 @@
 'use client'
-import { ReactNode } from 'react'
+import { ReactNode, useContext } from 'react'
 import type { Authors } from 'contentlayer/generated'
+import { allAuthors } from 'contentlayer/generated'
 import SocialIcon from '@/components/social-icons'
 import Image from '@/components/Image'
-import { useTranslation } from 'utils/locale'
+import Link from '@/components/Link'
+import { useTranslation, LanguageContext } from 'utils/locale'
 
 interface Props {
   children: ReactNode
@@ -11,8 +13,9 @@ interface Props {
 }
 
 export default function AuthorLayout({ children, content }: Props) {
-  const { name, avatar, occupation, company, email, twitter, linkedin, github } = content
+  const { name, avatar, occupation, company, email, twitter, linkedin, github, slug } = content
   const { t } = useTranslation()
+  const { currentLang } = useContext(LanguageContext)
 
   return (
     <>
@@ -43,6 +46,24 @@ export default function AuthorLayout({ children, content }: Props) {
               <SocialIcon kind="github" href={github} />
               <SocialIcon kind="linkedin" href={linkedin} />
               <SocialIcon kind="twitter" href={twitter} />
+            </div>
+            <div className="mt-10">
+              <b>{t('oc_title')}</b>
+              <hr className="my-2 w-48" />
+              {allAuthors
+                .filter((author) => author.slug.startsWith(`${currentLang}`) && author.name != name)
+                .map((author) => (
+                  <Link key={author.name} href={`/about/${author.slug}`}>
+                    <Image
+                      src={author.avatar || ''}
+                      alt={author.name}
+                      width={72}
+                      height={72}
+                      className="h-12 w-12 rounded-full"
+                      priority
+                    />
+                  </Link>
+                ))}
             </div>
           </div>
           <div className="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">
