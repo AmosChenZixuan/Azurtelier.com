@@ -25,23 +25,23 @@ const TypedBios = () => {
     <div>
       <span>👋 </span>
       <ul id="bios" className="hidden">
-        <li>
+        <li key="1">
           {t('typed.Iam')} {t('typed.alias.1')}{' '}
           <b className="text-primary-300">{t('typed.alias.2')}</b> {t('typed.alias.3')}.
         </li>
-        <li>
+        <li key="2">
           {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.swe')}</b>.
         </li>
-        <li>
+        <li key="3">
           {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.mle')}</b>.
         </li>
-        <li>
+        <li key="4">
           {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.gamer')}</b>.
         </li>
-        <li>
+        <li key="5">
           {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.anime')}</b>.
         </li>
-        <li>
+        <li key="6">
           {t('typed.Iam-a')} <b className="text-primary-300">{t('typed.pet1')}</b>
           {t('typed.pet2')}.
         </li>
