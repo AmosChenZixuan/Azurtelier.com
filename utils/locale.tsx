@@ -2,6 +2,7 @@
 import useLanguages, { defaultLang, defaultLangPack } from './locale-config.js'
 
 import { createContext, useState, useEffect, useContext } from 'react'
+import { useRouter } from 'next/navigation'
 
 type LanguageContextType = {
   currentLang: string
@@ -14,10 +15,18 @@ const LanguageContext = createContext<LanguageContextType>({
 })
 export { LanguageContext }
 
+const localePattern = /\/(en|zh)\//
+
 export function LanguageProvider({ children }) {
+  const router = useRouter()
   const [currentLang, setCurrentLang] = useState(defaultLang)
 
   useEffect(() => {
+    const currentPath = window.location.pathname
+    if (localePattern.test(currentPath)) {
+      const newPath = currentPath.replace(localePattern, `/${currentLang}/`)
+      router.push(newPath)
+    }
     setCurrentLang(currentLang)
   }, [currentLang])
 
