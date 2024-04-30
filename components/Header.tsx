@@ -5,7 +5,8 @@ import siteMetadata from '@/data/siteMetadata'
 import useHeaderNavLinks from '@/data/headerNavLinks'
 import Image from 'next/image'
 import Link from './Link'
-import MobileNav from './MobileNav'
+import MobileNav from './mobile-nav/MobileNav'
+import MobileNavToggle from './mobile-nav/MobileNavToggle'
 import ThemeSwitch from './ThemeSwitch'
 import SearchButton from './SearchButton'
 
@@ -14,10 +15,17 @@ import { useTranslation } from 'utils/locale'
 
 const Header = () => {
   const { t } = useTranslation()
+  const [navShow, setNavShow] = useState(false)
   const [lastScrollTop, setLastScrollTop] = useState(0)
   const [headerVisible, setHeaderVisible] = useState(true)
   const [isScrolled, setScrolled] = useState(false)
   const triggerHeight = 100
+
+  // mount initial scroll position
+  useEffect(() => {
+    const initialScrollTop = window.scrollY || document.documentElement.scrollTop
+    setScrolled(initialScrollTop > triggerHeight)
+  }, [])
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,7 +49,20 @@ const Header = () => {
     return !isScrolled || headerVisible
   }
 
+  const onToggleNav = () => {
+    setNavShow((status) => {
+      if (status) {
+        document.body.style.overflow = 'auto'
+      } else {
+        // Prevent scrolling
+        document.body.style.overflow = 'hidden'
+      }
+      return !status
+    })
+  }
+
   return (
+    <>
     <motion.header
       className={`fixed left-0 right-0 top-2 z-50 mx-auto
         rounded-md bg-white/30 py-2 pl-2
@@ -88,11 +109,13 @@ const Header = () => {
           <SearchButton />
           <ThemeSwitch />
           <LocaleSwitch />
-          <MobileNav />
+          <MobileNavToggle  onToggleNav={onToggleNav}/>
         </div>
         {/* <div className="absolute inset-x-0 middle-y-0 border-t border-gray-300"></div> */}
       </div>
     </motion.header>
+    <MobileNav navShow={navShow} onToggleNav={onToggleNav} />
+    </>
   )
 }
 
