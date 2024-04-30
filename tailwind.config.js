@@ -24,6 +24,7 @@ module.exports = {
       },
       fontFamily: {
         sans: fonts,
+        orbitron: ['var(--font-orbitron)', ...fontFamily.sans],
         zzz: ['zzz-a', ...fonts],
         zzz2: ['zzz-b', ...fonts],
         teyvat: ['teyvat', ...fonts],

@@ -8,12 +8,17 @@ const MobileNav = ({navShow, onToggleNav}) => {
 
   return (
       <div
-        className={`fixed inset-0 top-0 z-50 h-screen w-screen bg-white opacity-90 transition-transform duration-300 ease-in-out
+        className={`fixed inset-0 top-0 z-50 h-screen w-screen bg-white opacity-95 transition-transform duration-300 ease-in-out
         dark:bg-black sm:hidden
         ${navShow ? 'translate-x-0' : 'translate-x-full'}`}
       >
-        <div className="flex justify-end">
-          <button className="mr-8 mt-11 h-8 w-8" aria-label="Toggle Menu" onClick={onToggleNav}>
+        
+        <div className="flex justify-between items-center mt-11">
+          <p className='item-start ml-8 font-orbitron font-extrabold text-[1.5rem]'>
+            A Z <br/> U R
+          </p>
+
+          <button className="mr-8 h-8 w-8" aria-label="Toggle Menu" onClick={onToggleNav}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 20 20"

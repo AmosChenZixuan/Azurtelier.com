@@ -2,7 +2,7 @@ import 'css/tailwind.css'
 import 'css/fonts.css'
 import 'pliny/search/algolia.css'
 
-import { Pangolin, ZCOOL_KuaiLe } from 'next/font/google'
+import { Pangolin, ZCOOL_KuaiLe, Orbitron } from 'next/font/google'
 import { Analytics, AnalyticsConfig } from 'pliny/analytics'
 import { SearchProvider, SearchConfig } from 'pliny/search'
 import Header from '@/components/Header'
@@ -13,6 +13,7 @@ import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import { LanguageProvider } from 'utils/locale'
 
+// default english text
 const pangolin = Pangolin({
   subsets: ['latin'],
   display: 'swap',
@@ -20,10 +21,19 @@ const pangolin = Pangolin({
   weight: '400',
 })
 
+// default Chinese text
 const zcool_kuaile = ZCOOL_KuaiLe({
   subsets: ['latin'],
   display: 'swap',
   variable: '--font-zcool-kuaile',
+  weight: '400',
+})
+
+// logo Font
+const orbitron = Orbitron({
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-orbitron',
   weight: '400',
 })
 
@@ -71,7 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html
       lang={siteMetadata.language}
-      className={`${pangolin.variable} ${zcool_kuaile.variable} scroll-smooth`}
+      className={`${pangolin.variable} ${zcool_kuaile.variable} ${orbitron.variable} scroll-smooth`}
       suppressHydrationWarning
     >
       <head>
