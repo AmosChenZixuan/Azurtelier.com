@@ -14,7 +14,7 @@ import {
 import { wrap } from '@motionone/utils'
 
 interface ParallaxProps {
-  children: string
+  children: React.ReactNode
   baseVelocity: number
   className?: string
 }
@@ -71,23 +71,10 @@ function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps
         style={{ x: d, rotate: 0 }}
         transformTemplate={({ x, rotate }) => `rotate(${rotate})  translateX(${x})`}
       >
-        <span> {children} </span>
-        <span> {children} </span>
-        <span> {children} </span>
-        <span> {children} </span>
+        {children} {children} {children} {children}
       </motion.div>
     </div>
   )
 }
 
-const ScrollingBanner = () => (
-  <section className="text-primary-300">
-    <ParallaxText baseVelocity={-2} className="fixed bottom-0 max-w-5xl font-zzz">
-      Framer MotionFramer
-    </ParallaxText>
-    <ParallaxText baseVelocity={2} className="fixed bottom-12 max-w-5xl font-zzz">
-      Scroll velocity
-    </ParallaxText>
-  </section>
-)
-export default ScrollingBanner
+export default ParallaxText

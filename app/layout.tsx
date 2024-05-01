@@ -12,7 +12,6 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import { LanguageProvider } from 'utils/locale'
-import ScrollingBanner from 'components/scroll/ParallaxText'
 
 const pangolin = Pangolin({
   subsets: ['latin'],
@@ -95,7 +94,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   <Header />
                   <main className="mb-auto mt-20">{children}</main>
                 </SearchProvider>
-                <ScrollingBanner />
                 <Footer />
               </div>
             </SectionContainer>
