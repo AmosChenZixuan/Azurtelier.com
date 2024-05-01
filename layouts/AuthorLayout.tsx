@@ -27,7 +27,7 @@ export default function AuthorLayout({ children, content }: Props) {
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">{t('desc_about')}</p>
         </div>
         <div className="items-start space-y-2 xl:grid xl:grid-cols-3 xl:gap-x-8 xl:space-y-0">
-          <div className="top-20 flex flex-col items-center space-x-2 pt-8 xl:sticky">
+          <div className="top-12 flex flex-col items-center space-x-2 pt-8 xl:sticky">
             {avatar && (
               <Image
                 src={avatar}
@@ -48,22 +48,26 @@ export default function AuthorLayout({ children, content }: Props) {
               <SocialIcon kind="twitter" href={twitter} />
             </div>
             <div className="mt-10">
-              <b>{t('oc_title')}</b>
               <hr className="my-2 w-48" />
-              {allAuthors
-                .filter((author) => author.slug.startsWith(`${currentLang}`) && author.name != name)
-                .map((author) => (
-                  <Link key={author.name} href={`/about/${author.slug}`}>
-                    <Image
-                      src={author.avatar || ''}
-                      alt={author.name}
-                      width={72}
-                      height={72}
-                      className="h-12 w-12 rounded-full"
-                      priority
-                    />
-                  </Link>
-                ))}
+              <b>{t('oc_title')}</b>
+              <section className="flex space-x-2">
+                {allAuthors
+                  .filter(
+                    (author) => author.slug.startsWith(`${currentLang}`) && author.name != name
+                  )
+                  .map((author) => (
+                    <Link key={author.name} href={`/about/${author.slug}`}>
+                      <Image
+                        src={author.avatar || ''}
+                        alt={author.name}
+                        width={72}
+                        height={72}
+                        className="h-12 w-12 rounded-full"
+                        priority
+                      />
+                    </Link>
+                  ))}
+              </section>
             </div>
           </div>
           <div className="prose max-w-none pb-8 pt-8 dark:prose-invert xl:col-span-2">

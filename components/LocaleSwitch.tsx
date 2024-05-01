@@ -11,7 +11,7 @@ const ThemeSwitch = () => {
 
   const chinese = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" stroke="currentColor">
-      <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" fontSize="30">
+      <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" fontSize="32">
         文
       </text>
     </svg>
@@ -19,7 +19,7 @@ const ThemeSwitch = () => {
 
   const english = () => (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 33 33" stroke="currentColor">
-      <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" fontSize="30">
+      <text x="50%" y="60%" textAnchor="middle" dominantBaseline="middle" fontSize="32">
         En
       </text>
     </svg>
