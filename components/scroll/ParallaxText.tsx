@@ -1,7 +1,7 @@
 //https://www.framer.com/motion/scroll-animations/
 'use client'
 import 'css/parallaxText.css'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import {
   motion,
   useScroll,
@@ -30,6 +30,32 @@ function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps
   const velocityFactor = useTransform(smoothVelocity, [0, 1000], [0, 50], {
     clamp: false,
   })
+
+  const scrollerRef = useRef<HTMLDivElement | null>(null)
+  const prevVelocity = useRef(baseVelocity)
+  // stop scrolling when mouse is hovering
+  useEffect(() => {
+    const scroller = scrollerRef.current
+
+    const handleMouseEnter = () => {
+      prevVelocity.current = baseVelocity
+      baseVelocity = 0
+    }
+
+    const handleMouseLeave = () => {
+      baseVelocity = prevVelocity.current
+    }
+
+    if (scroller) {
+      scroller.addEventListener('mouseenter', handleMouseEnter)
+      scroller.addEventListener('mouseleave', handleMouseLeave)
+
+      return () => {
+        scroller.removeEventListener('mouseenter', handleMouseEnter)
+        scroller.removeEventListener('mouseleave', handleMouseLeave)
+      }
+    }
+  }, [])
 
   /**
    * This is a magic wrapping for the length of the text - you
@@ -65,7 +91,7 @@ function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps
    * dynamically generated number of children.
    */
   return (
-    <div className={`parallax ${className ? className : ''}`}>
+    <div ref={scrollerRef} className={`parallax ${className ? className : ''}`}>
       <motion.div
         className="scroller"
         style={{ x: d, rotate: 0 }}
