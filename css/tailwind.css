@@ -50,6 +50,22 @@ input:-webkit-autofill:focus {
   vertical-align: middle;
 }
 
-body {
+body, header {
   @apply transition-colors duration-1000;
+}
+
+.card {
+  @apply rounded-md shadow-lg;
+}
+
+.card:is(.dark *) {
+  @apply shadow-gray-800;
+}
+
+.text-primary {
+  @apply text-primary-300;
+}
+
+.text-primary:is(.dark *) {
+  @apply text-primary-100;
 }

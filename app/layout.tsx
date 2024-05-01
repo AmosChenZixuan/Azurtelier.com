@@ -1,5 +1,6 @@
 import 'css/tailwind.css'
 import 'css/fonts.css'
+import 'css/colors.css'
 import 'pliny/search/algolia.css'
 
 import { Pangolin, ZCOOL_KuaiLe, Orbitron } from 'next/font/google'

@@ -1,0 +1,64 @@
+.bg-light-blue-pink {
+  background: rgb(238, 174, 202);
+  background: linear-gradient(
+    280deg,
+    rgba(238, 174, 202, 0.1) 0%,
+    rgba(199, 180, 215, 0.1) 40%,
+    rgba(148, 187, 233, 0.1) 100%
+  );
+}
+
+.bg-light-blue-pink:is(.dark *) {
+  background: rgb(238, 174, 202);
+  background: linear-gradient(
+    280deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(185, 185, 225, 1) 40%,
+    rgba(148, 187, 233, 1) 100%
+  );
+}
+
+.bg-light-pink-blue {
+  background: rgb(238, 174, 202);
+  background: linear-gradient(
+    100deg,
+    rgba(238, 174, 202, 0.1) 0%,
+    rgba(199, 180, 215, 0.1) 40%,
+    rgba(148, 192, 233, 0.1) 100%
+  );
+}
+
+.bg-light-pink-blue:is(.dark *) {
+  background: rgb(238, 174, 202);
+  background: linear-gradient(
+    100deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(185, 185, 225, 1) 40%,
+    rgba(148, 192, 233, 1) 100%
+  );
+}
+
+/* Animation */
+.bg-pink-blue-animated {
+  background: linear-gradient(90deg, rgba(238, 174, 202, 0.3), rgba(148, 192, 233, 0.3));
+  background-size: 400% 400%;
+  animation: bg-pink-blue-animated 6s ease infinite;
+}
+
+.bg-pink-blue-animated:is(.dark *) {
+  background: linear-gradient(90deg, rgba(238, 174, 202, 1), rgba(148, 192, 233, 1));
+  background-size: 400% 400%;
+  animation: bg-pink-blue-animated 6s ease infinite;
+}
+
+@keyframes bg-pink-blue-animated {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

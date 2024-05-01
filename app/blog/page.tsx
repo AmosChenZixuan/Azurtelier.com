@@ -40,7 +40,7 @@ export default function BlogPage() {
       direction *= -1
 
       parallaxTexts.push(
-        <ParallaxText key={null} baseVelocity={velocity}>
+        <ParallaxText key={left} baseVelocity={velocity}>
           {sortedTags.slice(left, right).map((tag, j) => (
             <Tag key={j} text={tag} className="mx-6" />
           ))}
@@ -59,9 +59,21 @@ export default function BlogPage() {
 
   return (
     <div>
+      <div className="mt-10 flex justify-between space-x-5">
+        <div className="card bg-pink-blue-animated max-w-5xl overflow-hidden">
+          <ParallaxText baseVelocity={0} className="-translate-x-10 -rotate-[22deg] transform">
+            <span className="font-zzz text-3xl text-white">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+          </ParallaxText>
+        </div>
+        <div className="flex-col space-y-5">
+          <div className="card bg-light-blue-pink h-[8rem] w-[4rem]" />
+          <div className="card bg-light-pink-blue h-[4rem] w-[4rem]" />
+        </div>
+      </div>
+
       <section
-        className="mt-20 space-y-2 overflow-hidden rounded-xl pb-1
-        font-orbitron text-primary-300 shadow-md dark:shadow-gray-800"
+        className="card bg-light-blue-pink mt-5 space-y-2 overflow-hidden pb-1
+        font-orbitron"
       >
         {createParallaxTexts()}
       </section>

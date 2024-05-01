@@ -99,9 +99,9 @@ const Header = () => {
                 <Link
                   key={link.title}
                   href={link.href}
-                  className="hidden font-medium
-              text-gray-900 transition duration-300 hover:text-primary-500 dark:text-gray-100
-              dark:hover:text-primary-500 sm:block"
+                  className="hidden text-xl font-medium
+              text-gray-900 transition duration-300 hover:text-primary-400 dark:text-gray-100
+              dark:hover:text-primary-300 sm:block"
                 >
                   {link.title}
                 </Link>
