@@ -2,9 +2,9 @@
   background: rgb(238, 174, 202);
   background: linear-gradient(
     280deg,
-    rgba(238, 174, 202, 0.1) 0%,
-    rgba(199, 180, 215, 0.1) 40%,
-    rgba(148, 187, 233, 0.1) 100%
+    rgba(238, 174, 202, 0.3) 0%,
+    rgba(199, 180, 215, 0.3) 40%,
+    rgba(148, 187, 233, 0.3) 100%
   );
 }
 
@@ -22,9 +22,9 @@
   background: rgb(238, 174, 202);
   background: linear-gradient(
     100deg,
-    rgba(238, 174, 202, 0.1) 0%,
-    rgba(199, 180, 215, 0.1) 40%,
-    rgba(148, 192, 233, 0.1) 100%
+    rgba(238, 174, 202, 0.3) 0%,
+    rgba(199, 180, 215, 0.3) 40%,
+    rgba(148, 192, 233, 0.3) 100%
   );
 }
 
@@ -61,4 +61,28 @@
   100% {
     background-position: 0% 50%;
   }
+}
+
+/* Text Colors */
+
+.text-primary {
+  @apply text-primary-300;
+}
+
+.text-primary:is(.dark *) {
+  @apply text-primary-400;
+}
+
+.text-white:is(.dark *) {
+  @apply text-black;
+}
+
+svg.text-white:hover,
+a .text-white:hover {
+  @apply text-primary-300;
+}
+
+svg.text-white:hover:is(.dark *),
+a .text-white:hover:is(.dark *) {
+  @apply text-primary-400;
 }

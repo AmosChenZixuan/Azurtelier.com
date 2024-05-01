@@ -8,6 +8,7 @@ import {
   Mastodon,
   Threads,
   Instagram,
+  UserProfile,
 } from './icons'
 
 const components = {
@@ -20,15 +21,17 @@ const components = {
   mastodon: Mastodon,
   threads: Threads,
   instagram: Instagram,
+  userprofile: UserProfile,
 }
 
 type SocialIconProps = {
   kind: keyof typeof components
   href: string | undefined
   size?: number
+  className?: string
 }
 
-const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
+const SocialIcon = ({ kind, href, size = 8, className }: SocialIconProps) => {
   if (!href || (kind === 'mail' && !/^mailto:\w+([.-]?\w+)@\w+([.-]?\w+)(.\w{2,3})+$/.test(href)))
     return null
 
@@ -43,7 +46,7 @@ const SocialIcon = ({ kind, href, size = 8 }: SocialIconProps) => {
     >
       <span className="sr-only">{kind}</span>
       <SocialSvg
-        className={`fill-current text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400 h-${size} w-${size}`}
+        className={`fill-current ${className ? className : 'text-gray-700 hover:text-primary-500 dark:text-gray-200 dark:hover:text-primary-400'} h-${size} w-${size}`}
       />
     </a>
   )

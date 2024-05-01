@@ -18,7 +18,7 @@ const SearchButton = () => {
           viewBox="0 0 24 24"
           strokeWidth={2}
           stroke="currentColor"
-          className="h-5 w-5 text-gray-900 dark:text-gray-100"
+          className="h-5 w-5 text-white"
         >
           <path
             strokeLinecap="round"

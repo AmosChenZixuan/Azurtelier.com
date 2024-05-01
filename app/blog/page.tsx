@@ -5,6 +5,9 @@ import { genPageMetadata } from 'app/seo'
 import ParallaxText from '@/components/scroll/ParallaxText'
 import tagData from 'app/tag-data.json'
 import Tag from '@/components/Tag'
+import SearchButton from '@/components/SearchButton'
+import SocialIcon from '@/components/social-icons'
+import siteMetadata from '@/data/siteMetadata'
 
 const POSTS_PER_PAGE = 5
 
@@ -42,7 +45,12 @@ export default function BlogPage() {
       parallaxTexts.push(
         <ParallaxText key={left} baseVelocity={velocity}>
           {sortedTags.slice(left, right).map((tag, j) => (
-            <Tag key={j} text={tag} className="mx-6" />
+            <Tag
+              key={j}
+              text={tag}
+              className="mx-6 text-white hover:text-primary-300
+              dark:text-gray-900 dark:hover:text-primary-400"
+            />
           ))}
         </ParallaxText>
       )
@@ -59,15 +67,31 @@ export default function BlogPage() {
 
   return (
     <div>
-      <div className="mt-10 flex justify-between space-x-5">
-        <div className="card bg-pink-blue-animated max-w-5xl overflow-hidden">
-          <ParallaxText baseVelocity={0} className="-translate-x-10 -rotate-[22deg] transform">
-            <span className="font-zzz text-3xl text-white">ABCDEFGHIJKLMNOPQRSTUVWXYZ</span>
+      <div className="mt-6 flex justify-between space-x-5">
+        <div className="card bg-pink-blue-animated relative max-w-5xl overflow-hidden">
+          <ParallaxText
+            baseVelocity={0}
+            className="-translate-x-[1rem] -translate-y-[1rem] -rotate-[10deg] transform"
+          >
+            <span className="font-zzz text-3xl text-white">WelcomeToMyBlogPage!</span>
           </ParallaxText>
+          <p className="absolute bottom-8 right-8 mt-[5rem] font-zzz2 text-3xl text-white">
+            {' '}
+            Work Hard, Dream Big
+          </p>
         </div>
         <div className="flex-col space-y-5">
-          <div className="card bg-light-blue-pink h-[8rem] w-[4rem]" />
-          <div className="card bg-light-pink-blue h-[4rem] w-[4rem]" />
+          <div className="card bg-light-blue-pink flex h-[8rem] w-[4rem] items-center justify-center">
+            <div className="flex flex-col space-y-5 text-white">
+              <SocialIcon kind="userprofile" href="/about" className="text-white" />
+              <SocialIcon kind="github" href={siteMetadata.siteRepo} className="text-white" />
+            </div>
+          </div>
+          <div className="card bg-light-pink-blue relative flex h-[4rem] w-[4rem] items-center justify-center">
+            <div className="absolute m-auto scale-[1.7] transform">
+              <SearchButton />
+            </div>
+          </div>
         </div>
       </div>
 

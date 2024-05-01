@@ -8,7 +8,6 @@ import Link from './Link'
 import MobileNav from './mobile-nav/MobileNav'
 import MobileNavToggle from './mobile-nav/MobileNavToggle'
 import ThemeSwitch from './ThemeSwitch'
-import SearchButton from './SearchButton'
 
 import LocaleSwitch from './LocaleSwitch'
 import { useTranslation } from 'utils/locale'
@@ -106,7 +105,6 @@ const Header = () => {
                   {link.title}
                 </Link>
               ))}
-            <SearchButton />
             <ThemeSwitch />
             <LocaleSwitch />
             <MobileNavToggle onToggleNav={onToggleNav} />
