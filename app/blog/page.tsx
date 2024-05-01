@@ -60,8 +60,8 @@ export default function BlogPage() {
   return (
     <div>
       <section
-        className="mt-20 space-y-2 overflow-hidden 
-        rounded-xl text-primary-300 shadow-md dark:shadow-gray-800"
+        className="mt-20 space-y-2 overflow-hidden rounded-xl pb-1
+        font-orbitron text-primary-300 shadow-md dark:shadow-gray-800"
       >
         {createParallaxTexts()}
       </section>
