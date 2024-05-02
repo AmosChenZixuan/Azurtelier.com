@@ -1,6 +1,6 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: "Azur's DigiAtelier",
+  title: 'Azurtelier™',
   author: 'Zixuan Chen (Amos)',
   headerTitle: '',
   description: '阿梓的数字炼金工坊',
