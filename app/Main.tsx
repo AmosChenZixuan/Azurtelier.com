@@ -6,6 +6,7 @@ import { formatDate } from 'pliny/utils/formatDate'
 import NewsletterForm from 'pliny/ui/NewsletterForm'
 import { useTranslation, LanguageContext } from 'utils/locale'
 import { useContext } from 'react'
+import DashBoard from '@/components/home/DashBoard'
 
 const MAX_DISPLAY = 5
 
@@ -22,6 +23,7 @@ export default function Home({ posts }) {
           </h1>
           <p className="text-lg leading-7 text-gray-500 dark:text-gray-400">{t('home_desc')}</p>
         </div>
+        <DashBoard />
         <ul className="divide-y divide-gray-200 dark:divide-gray-700">
           {!posts.length && 'No posts found.'}
           {posts.slice(0, MAX_DISPLAY).map((post) => {

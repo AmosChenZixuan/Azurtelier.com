@@ -1,9 +1,9 @@
 /** @type {import("pliny/config").PlinyConfig } */
 const siteMetadata = {
-  title: 'AzurOfficial',
+  title: "Azur's DigiAtelier",
   author: 'Zixuan Chen (Amos)',
   headerTitle: '',
-  description: '阿梓Official的秘密基地',
+  description: '阿梓的数字炼金工坊',
   language: 'en-us',
   theme: 'system', // system, dark or light
   siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
