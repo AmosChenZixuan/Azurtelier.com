@@ -4,6 +4,8 @@ import siteMetadata from '@/data/siteMetadata'
 import ParallaxText from '@/components/scroll/ParallaxText'
 import tagData from 'app/tag-data.json'
 import Tag from '@/components/Tag'
+import GitHubCalendar from './GithubCalendar'
+import Image from '@/components/Image'
 
 export default function DashBoard() {
   // tags
@@ -73,6 +75,29 @@ export default function DashBoard() {
               <SearchButton />
             </div>
           </div>
+        </div>
+      </div>
+
+      <div className="mt-5 flex justify-between space-x-5">
+        <div className="flex-col space-y-5">
+          <section className="card bg-light-blue-pink flex h-[12rem] w-[20rem] items-center justify-center overflow-hidden p-10">
+            <GitHubCalendar className="text-white" />
+          </section>
+
+          <div className="card bg-pink-blue-animated flex-center h-[8rem] w-[20rem]">
+            <h1 className="font-zzz2 text-xl text-white">Coming Soon</h1>
+          </div>
+        </div>
+
+        <div className="card bg-pink-blue-animated flex-center h-[21.25rem] w-full overflow-hidden">
+          <h1 className="font-zzz2 text-3xl text-white xl:hidden">Coming Soon</h1>
+          <img
+            src="/static/images/azuki_banner.png"
+            alt="azuki"
+            className="hidden xl:block"
+            width={1216}
+            height={616}
+          />
         </div>
       </div>
 

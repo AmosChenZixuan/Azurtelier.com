@@ -62,3 +62,7 @@ header {
 .card:is(.dark *) {
   @apply shadow-gray-800;
 }
+
+.flex-center {
+  @apply flex items-center justify-center;
+}
