@@ -1,7 +1,7 @@
 //https://www.framer.com/motion/scroll-animations/
 'use client'
 import 'css/parallaxText.css'
-import { useEffect, useRef } from 'react'
+import { MutableRefObject, useEffect, useRef } from 'react'
 import {
   motion,
   useScroll,
@@ -19,6 +19,33 @@ interface ParallaxProps {
   className?: string
 }
 
+const onHover = (
+  scrollerRef: MutableRefObject<HTMLDivElement | null>,
+  prevVelocity: MutableRefObject<number>,
+  currVelocity: MutableRefObject<number>
+) => {
+  const scroller = scrollerRef.current
+
+  const handleMouseEnter = () => {
+    prevVelocity.current = currVelocity.current
+    currVelocity.current = 0
+  }
+
+  const handleMouseLeave = () => {
+    currVelocity.current = prevVelocity.current
+  }
+  console.log('scroller', scroller)
+  if (scroller) {
+    scroller.addEventListener('mouseenter', handleMouseEnter)
+    scroller.addEventListener('mouseleave', handleMouseLeave)
+
+    return () => {
+      scroller.removeEventListener('mouseenter', handleMouseEnter)
+      scroller.removeEventListener('mouseleave', handleMouseLeave)
+    }
+  }
+}
+
 function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps) {
   const base = useMotionValue(0)
   const { scrollY } = useScroll()
@@ -32,29 +59,12 @@ function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps
   })
 
   const scrollerRef = useRef<HTMLDivElement | null>(null)
+  const currVelocity = useRef(baseVelocity)
   const prevVelocity = useRef(baseVelocity)
   // stop scrolling when mouse is hovering
   useEffect(() => {
-    const scroller = scrollerRef.current
-
-    const handleMouseEnter = () => {
-      prevVelocity.current = baseVelocity
-      baseVelocity = 0
-    }
-
-    const handleMouseLeave = () => {
-      baseVelocity = prevVelocity.current
-    }
-
-    if (scroller) {
-      scroller.addEventListener('mouseenter', handleMouseEnter)
-      scroller.addEventListener('mouseleave', handleMouseLeave)
-
-      return () => {
-        scroller.removeEventListener('mouseenter', handleMouseEnter)
-        scroller.removeEventListener('mouseleave', handleMouseLeave)
-      }
-    }
+    const cleanup = onHover(scrollerRef, prevVelocity, currVelocity)
+    return cleanup
   }, [])
 
   /**
@@ -66,7 +76,7 @@ function ParallaxText({ children, baseVelocity = 100, className }: ParallaxProps
 
   const directionFactor = useRef<number>(1)
   useAnimationFrame((t, delta) => {
-    let moveBy = directionFactor.current * baseVelocity * (delta / 1000)
+    let moveBy = directionFactor.current * currVelocity.current * (delta / 1000)
 
     /**
      * This is what changes the direction of the scroll once we

@@ -1,10 +1,17 @@
 import Link from '@/components/Link'
+import Image from '@/components/Image'
 
 export default function NotFound() {
   return (
     <div className="flex flex-col items-start justify-start xl:mt-24 xl:flex-row xl:items-center xl:justify-center xl:space-x-6">
       <div className="flex flex-col items-center space-x-2 pb-8 pt-6">
-        <img src="/static/images/404.jpeg" className="h-80 w-80"></img>
+        <Image
+          src="/static/images/404.jpeg"
+          width={512}
+          height={512}
+          className="h-80 w-80"
+          alt="404"
+        ></Image>
       </div>
       <div className="max-w-xl xl:border-l-2 xl:pl-20">
         <p className="mb-4 text-xl font-bold leading-normal xl:text-2xl">
