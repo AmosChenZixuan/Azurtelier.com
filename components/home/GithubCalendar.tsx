@@ -7,22 +7,15 @@ const minimalTheme: ThemeInput = {
   dark: ['#313244', '#cba6f7'],
 }
 
-const DAYS = 90
+const DAYS = 98
 
 function selectLastNDays(contributions: Array<Activity>): Array<Activity> {
-  const today = new Date()
-  const startDate = new Date(today)
-  startDate.setDate(today.getDate() - DAYS)
-
-  return contributions.filter((activity) => {
-    const activityDate = new Date(activity.date)
-    return activityDate >= startDate && activityDate <= today
-  })
+  return contributions.slice(-DAYS)
 }
 
 export default function GithubCalendar({ className = '' }) {
   return (
-    <section className={`${className} dark scale-[1.2] transform overflow-hidden`}>
+    <section className={`${className} p-10`}>
       <GitHubCalendar
         username="amoschenzixuan"
         transformData={selectLastNDays}

@@ -20,10 +20,10 @@ export default function DashBoard() {
 
       <div className="mt-5 flex justify-between space-x-5">
         <div className="flex-col space-y-5">
-          <GithubActivityBox />
+          <SpotifyPlayerBox />
           <ScrollTextBox />
         </div>
-        <SpotifyPlayerBox />
+        <GithubActivityBox />
         <GalleryPreviewBox />
       </div>
 
