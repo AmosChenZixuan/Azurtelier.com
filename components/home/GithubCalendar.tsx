@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import GitHubCalendar, { ThemeInput, Activity } from 'react-github-calendar'
 
