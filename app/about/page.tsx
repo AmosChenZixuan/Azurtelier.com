@@ -6,6 +6,9 @@ import { coreContent, CoreContent } from 'pliny/utils/contentlayer'
 import TypedBios from './TypedBio'
 import { LanguageContext } from 'utils/locale'
 import { useRef, useEffect, useContext } from 'react'
+// import { genPageMetadata } from 'app/seo'
+
+// export const metadata = genPageMetadata({ title: 'About' })
 
 export default function Page() {
   const { currentLang } = useContext(LanguageContext)
