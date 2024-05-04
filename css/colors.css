@@ -38,6 +38,26 @@
   );
 }
 
+.bg-gray-purple {
+  background: rgb(138, 137, 143);
+  background: linear-gradient(
+    258deg,
+    rgba(138, 137, 143, 0.3) 0%,
+    rgba(131, 131, 184, 0.3) 20%,
+    rgba(185, 151, 250, 0.3) 100%
+  );
+}
+
+.bg-gray-purple:is(.dark *) {
+  background: rgb(138, 137, 143);
+  background: linear-gradient(
+    258deg,
+    rgba(138, 137, 143, 1) 0%,
+    rgba(131, 131, 184, 1) 20%,
+    rgba(185, 151, 250, 1) 100%
+  );
+}
+
 /* Animation */
 .bg-pink-blue-animated {
   background: linear-gradient(90deg, rgba(238, 174, 202, 0.3), rgba(148, 192, 233, 0.3));
@@ -61,6 +81,14 @@
   100% {
     background-position: 0% 50%;
   }
+}
+
+.animation-delay-1 {
+  animation-delay: 300ms !important;
+}
+
+.animation-delay-2 {
+  animation-delay: 600ms !important;
 }
 
 /* Text Colors */

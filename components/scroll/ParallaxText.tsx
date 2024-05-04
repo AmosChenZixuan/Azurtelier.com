@@ -34,7 +34,7 @@ const onHover = (
   const handleMouseLeave = () => {
     currVelocity.current = prevVelocity.current
   }
-  console.log('scroller', scroller)
+
   if (scroller) {
     scroller.addEventListener('mouseenter', handleMouseEnter)
     scroller.addEventListener('mouseleave', handleMouseLeave)

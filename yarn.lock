@@ -3199,6 +3199,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/chroma-js@npm:^2.4.3":
+  version: 2.4.4
+  resolution: "@types/chroma-js@npm:2.4.4"
+  checksum: 32d69cb4c071b3d18650b803a7858d5d14e6b59fc55deb540ea29d6172f3334cddf1823ab1221cb123077171db0510b48562bac2a5853dc71f60318c5ae250bb
+  languageName: node
+  linkType: hard
+
 "@types/debug@npm:^4.0.0":
   version: 4.1.12
   resolution: "@types/debug@npm:4.1.12"
@@ -4255,6 +4262,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"chroma-js@npm:^2.4.2":
+  version: 2.4.2
+  resolution: "chroma-js@npm:2.4.2"
+  checksum: cf9884c02d406286e4370599bcd1afbf089384407df46b3a69edfedcba7bb99e8f959a5cfdbfec750b305c441c06ca40cd1f70ba3a6c2ce739ac09a92520ddae
+  languageName: node
+  linkType: hard
+
 "citeproc@npm:^2.4.6, citeproc@npm:^2.4.63":
   version: 2.4.63
   resolution: "citeproc@npm:2.4.63"
@@ -4676,6 +4690,13 @@ __metadata:
     es-errors: ^1.3.0
     is-data-view: ^1.0.1
   checksum: 7f0bf8720b7414ca719eedf1846aeec392f2054d7af707c5dc9a753cc77eb8625f067fa901e0b5127e831f9da9056138d894b9c2be79c27a21f6db5824f009c2
+  languageName: node
+  linkType: hard
+
+"date-fns@npm:^3.2.0":
+  version: 3.6.0
+  resolution: "date-fns@npm:3.6.0"
+  checksum: 0daa1e9a436cf99f9f2ae9232b55e11f3dd46132bee10987164f3eebd29f245b2e066d7d7db40782627411ecf18551d8f4c9fcdf2226e48bb66545407d448ab7
   languageName: node
   linkType: hard
 
@@ -9499,6 +9520,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-activity-calendar@npm:^2.2.8":
+  version: 2.2.8
+  resolution: "react-activity-calendar@npm:2.2.8"
+  dependencies:
+    "@types/chroma-js": ^2.4.3
+    chroma-js: ^2.4.2
+    date-fns: ^3.2.0
+  peerDependencies:
+    react: ^17.0.0 || ^18.0.0
+    react-dom: ^17.0.0 || ^18.0.0
+  checksum: f42d1878315b08562165c1dbfa4e931ecd8b4c3eb4384785f1315b2800d5abdf206069babe803f66bc2c1e45fd94257a85a63272bdf85aae1053b03d0d815dd1
+  languageName: node
+  linkType: hard
+
 "react-dom@npm:18.2.0":
   version: 18.2.0
   resolution: "react-dom@npm:18.2.0"
@@ -9508,6 +9543,15 @@ __metadata:
   peerDependencies:
     react: ^18.2.0
   checksum: 7d323310bea3a91be2965f9468d552f201b1c27891e45ddc2d6b8f717680c95a75ae0bc1e3f5cf41472446a2589a75aed4483aee8169287909fcd59ad149e8cc
+  languageName: node
+  linkType: hard
+
+"react-icons@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "react-icons@npm:5.2.0"
+  peerDependencies:
+    react: "*"
+  checksum: bb5201994f3db55bbf187d4885ae6ff549254b3d67a0b90d4bc8b71bfb35a1a6e1a02e60fb8b8bd50027014fdd7dc272b88bb29c83446688bd2692256758f9bc
   languageName: node
   linkType: hard
 
@@ -10956,7 +11000,9 @@ __metadata:
     prettier: ^3.0.0
     prettier-plugin-tailwindcss: ^0.5.11
     react: 18.2.0
+    react-activity-calendar: ^2.2.8
     react-dom: 18.2.0
+    react-icons: ^5.2.0
     reading-time: 1.5.0
     rehype-autolink-headings: ^7.1.0
     rehype-citation: ^2.0.0
