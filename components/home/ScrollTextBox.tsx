@@ -3,7 +3,6 @@ import { motion, useScroll, useTransform } from 'framer-motion'
 
 export default function ScrollTextBox() {
   const { scrollY } = useScroll()
-  console.log(scrollY.get())
   const viewPoints = [0, 250, 500, 750, 1000]
   const scale = useTransform(scrollY, viewPoints, [1, 1.5, 1.5, 1, 1])
   const rotate = useTransform(scrollY, viewPoints, [0, 0, 180, 180, 0])
