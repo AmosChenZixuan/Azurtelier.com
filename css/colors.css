@@ -83,6 +83,14 @@
   }
 }
 
+.animation-delay-1 {
+  animation-delay: 300ms !important;
+}
+
+.animation-delay-2 {
+  animation-delay: 600ms !important;
+}
+
 /* Text Colors */
 
 .text-primary {

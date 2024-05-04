@@ -11,7 +11,7 @@ export default function ScrollTextBox() {
 
   return (
     <div
-      className={`card bg-pink-blue-animated flex-center flex-grow flex-col space-y-5 overflow-hidden`}
+      className={`card bg-pink-blue-animated animation-delay-2 flex-center flex-grow flex-col space-y-5 overflow-hidden p-2`}
     >
       <h1 className="font-zzz2 text-white">Coming Soon</h1>
       <motion.div className="bg-gray-purple h-8 w-8" style={{ scale, rotate, borderRadius }} />

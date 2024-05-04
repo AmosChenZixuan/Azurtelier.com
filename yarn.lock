@@ -9546,6 +9546,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-icons@npm:^5.2.0":
+  version: 5.2.0
+  resolution: "react-icons@npm:5.2.0"
+  peerDependencies:
+    react: "*"
+  checksum: bb5201994f3db55bbf187d4885ae6ff549254b3d67a0b90d4bc8b71bfb35a1a6e1a02e60fb8b8bd50027014fdd7dc272b88bb29c83446688bd2692256758f9bc
+  languageName: node
+  linkType: hard
+
 "react-is@npm:^16.13.1":
   version: 16.13.1
   resolution: "react-is@npm:16.13.1"
@@ -10993,6 +11002,7 @@ __metadata:
     react: 18.2.0
     react-activity-calendar: ^2.2.8
     react-dom: 18.2.0
+    react-icons: ^5.2.0
     reading-time: 1.5.0
     rehype-autolink-headings: ^7.1.0
     rehype-citation: ^2.0.0
