@@ -1,10 +1,12 @@
 export default function GalleryPreviewBox() {
   return (
-    <div className="card bg-pink-blue-animated flex-center h-[21.25rem] w-[15rem] flex-shrink-0 overflow-hidden">
+    <div
+      className={`card bg-pink-blue-animated sticky right-0 min-w-[4rem] max-w-[25%] flex-grow overflow-hidden`}
+    >
       <img
         src="/static/gallary/art/ai/azuki/charming_smile.jpeg"
         alt="azuki"
-        className=""
+        className="h-full w-full object-cover"
         width={832}
         height={1216}
       />

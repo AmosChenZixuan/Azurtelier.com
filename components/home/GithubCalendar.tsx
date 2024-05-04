@@ -15,7 +15,7 @@ function selectLastNDays(contributions: Array<Activity>): Array<Activity> {
 
 export default function GithubCalendar({ className = '' }) {
   return (
-    <section className={`${className} p-10`}>
+    <section className={`${className} p-5`}>
       <GitHubCalendar
         username="amoschenzixuan"
         transformData={selectLastNDays}
