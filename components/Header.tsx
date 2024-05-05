@@ -77,7 +77,7 @@ const Header = () => {
           <Link href="/" aria-label={siteMetadata.headerTitle} className="flex items-center">
             <div className="flex items-center justify-between">
               <div className="mr-3 hidden md:block">
-                <Image src="/static/images/logo.png" width="200" height="44" alt="logo" priority />
+                <Image src="/static/images/logo.png" width="200" height="21" alt="logo" priority />
               </div>
               <div className="mr-3 block md:hidden">
                 <Image src="/static/favicons/icon.png" width="44" height="44" alt="logo" priority />
