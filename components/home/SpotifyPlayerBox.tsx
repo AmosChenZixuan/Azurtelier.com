@@ -19,6 +19,10 @@ export default function SpotifyPlayerBox() {
   const fetcher = (url) => fetch(url).then((r) => r.json())
   const { data }: { data: SongData } = useSWR('/api/spotify', fetcher)
 
+  const imageLoader = ({ src }) => {
+    return `/api/imageProxy?url=${encodeURIComponent(src)}`
+  }
+
   return (
     <div
       className={`card bg-pink-blue-animated animation-delay-1 flex-center flex-grow overflow-hidden p-2`}
@@ -33,7 +37,8 @@ export default function SpotifyPlayerBox() {
           </section>
           <section className="relative mx-auto h-24 w-24">
             <Image
-              src={`/api/imageProxy?url=${encodeURIComponent(data.albumImageUrl)}`}
+              loader={imageLoader}
+              src={data.albumImageUrl}
               alt={data.album}
               width={375}
               height={375}
@@ -42,10 +47,12 @@ export default function SpotifyPlayerBox() {
               <FaSpotify size={21} />
             </div>
           </section>
-          <h2 className="text-xl text-white">{data.title}</h2>
-          <section className="flex items-center space-x-1 text-white">
-            <RiUserHeartFill size={16} />
-            <h5 className="text-sm ">{data.artist}</h5>
+          <section className="-space-y-1">
+            <h2 className="text-xl text-white">{data.title}</h2>
+            <div className="flex items-center space-x-1 text-white">
+              <RiUserHeartFill size={16} />
+              <h5 className="text-sm ">{data.artist}</h5>
+            </div>
           </section>
         </Link>
       )}
