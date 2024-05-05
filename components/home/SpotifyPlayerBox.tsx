@@ -45,10 +45,12 @@ export default function SpotifyPlayerBox() {
               <FaSpotify size={21} />
             </div>
           </section>
-          <h2 className="text-xl text-white">{data.title}</h2>
-          <section className="flex items-center space-x-1 text-white">
-            <RiUserHeartFill size={16} />
-            <h5 className="text-sm ">{data.artist}</h5>
+          <section className="-space-y-1">
+            <h2 className="text-xl text-white">{data.title}</h2>
+            <div className="flex items-center space-x-1 text-white">
+              <RiUserHeartFill size={16} />
+              <h5 className="text-sm ">{data.artist}</h5>
+            </div>
           </section>
         </Link>
       )}
