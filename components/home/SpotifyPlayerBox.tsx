@@ -5,15 +5,7 @@ import { RiUserHeartFill } from 'react-icons/ri'
 import useSWR from 'swr'
 import Link from '@/components/Link'
 import Image from '@/components/Image'
-
-interface SongData {
-  isPlaying: boolean
-  title: string
-  artist: string
-  album: string
-  albumImageUrl: string
-  songUrl: string
-}
+import { SongData } from '@/types/spotify'
 
 export default function SpotifyPlayerBox() {
   const fetcher = (url) => fetch(url).then((r) => r.json())
