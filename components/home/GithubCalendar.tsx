@@ -26,7 +26,7 @@ export default function GithubCalendar({ className = '' }) {
       .then(setData)
       .catch(setError)
       .finally(() => setLoading(false))
-  }, [USERNAME])
+  }, [])
 
   useEffect(fetchData, [fetchData])
 
