@@ -23,11 +23,13 @@ export default function SpotifyPlayerBox() {
     <div
       className={`card bg-pink-blue-animated animation-delay-1 flex-center flex-grow overflow-hidden p-2`}
     >
-      {data?.isPlaying && (
+      {data?.songUrl && (
         <Link href={data.songUrl} className="flex flex-col space-y-1 px-3">
           <section className="mx-auto flex items-center space-x-1 text-primary-600">
             <PiWaveformBold size={12} />
-            <span className="whitespace-nowrap font-sans text-xs">Now playing...</span>
+            <span className="whitespace-nowrap font-sans text-xs">
+              {data.isPlaying ? 'Now playing...' : 'Last played...'}
+            </span>
           </section>
           <section className="relative mx-auto h-24 w-24">
             <Image
@@ -48,7 +50,7 @@ export default function SpotifyPlayerBox() {
         </Link>
       )}
 
-      {!data?.isPlaying && (
+      {!data?.songUrl && (
         <section className="flex flex-col items-center justify-center">
           <div className="text-primary ">
             <FaSpotify size={42} />
