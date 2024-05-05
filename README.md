@@ -1,3 +1,10 @@
+<img src="public/static/favicons/icon.png" height="48" >
+<div align="center">
+  <img src="public/static/images/logo.png" height="64" >
+</div>
+
+---
+
 ![banner](public/static/images/banner.png)
 
 # AmosChenZixuan Personal Blog
@@ -9,8 +16,9 @@ This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com
 ## Addtional Features by Me
 
 - Internationalization. Support English and Chinese.
-- Customized Font: EN - Pangolin, ZH - ZCOOL KuaiLe
-- Static Deployment on Github pages
+- Customized Font
+- Spotify API displaying currently playing songs
+- Image Gallery and Previewer (Work in Progress)
 
 ## Original Features From the Template
 
