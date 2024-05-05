@@ -56,11 +56,17 @@ header {
 }
 
 .card {
-  @apply rounded-md shadow-lg;
+  @apply rounded-md shadow-md;
+  @apply transition-shadow duration-100 hover:shadow-purple;
+
+  @apply dark:shadow-gray-800;
+  @apply dark:hover:shadow-azure;
 }
 
-.card:is(.dark *) {
-  @apply shadow-gray-800;
+.lightcone {
+  @apply rounded-md shadow-purple;
+
+  @apply dark:shadow-azure;
 }
 
 .flex-center {

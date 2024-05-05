@@ -128,33 +128,32 @@ export default function ListLayoutWithTags({
               {displayPosts.map((post) => {
                 const { path, date, title, summary, tags } = post
                 return (
-                  <li
-                    key={path}
-                    className="card mb-5 transform border p-5 duration-300 hover:scale-[1.02]"
-                  >
-                    <article className="flex flex-col space-y-2 xl:space-y-0">
-                      <dl>
-                        <dt className="sr-only">Published on</dt>
-                        <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                          <time dateTime={date}>{formatDate(date, currentLang)}</time>
-                        </dd>
-                      </dl>
-                      <div className="space-y-3">
-                        <div>
-                          <h2 className="text-2xl font-bold leading-8 tracking-tight">
-                            <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
-                              {title}
-                            </Link>
-                          </h2>
-                          <div className="flex flex-wrap">
-                            {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                  <li key={path} className="transform duration-300 hover:scale-[1.02]">
+                    <section className="card mb-5 border p-5">
+                      <article className="flex flex-col space-y-2 xl:space-y-0">
+                        <dl>
+                          <dt className="sr-only">Published on</dt>
+                          <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
+                            <time dateTime={date}>{formatDate(date, currentLang)}</time>
+                          </dd>
+                        </dl>
+                        <div className="space-y-3">
+                          <div>
+                            <h2 className="text-2xl font-bold leading-8 tracking-tight">
+                              <Link href={`/${path}`} className="text-gray-900 dark:text-gray-100">
+                                {title}
+                              </Link>
+                            </h2>
+                            <div className="flex flex-wrap">
+                              {tags?.map((tag) => <Tag key={tag} text={tag} />)}
+                            </div>
+                          </div>
+                          <div className="prose max-w-none text-gray-500 dark:text-gray-400">
+                            {summary}
                           </div>
                         </div>
-                        <div className="prose max-w-none text-gray-500 dark:text-gray-400">
-                          {summary}
-                        </div>
-                      </div>
-                    </article>
+                      </article>
+                    </section>
                   </li>
                 )
               })}

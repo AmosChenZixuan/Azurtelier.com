@@ -7,13 +7,8 @@ const Card = ({ title, description, imgSrc, href }) => {
   const { t } = useTranslation()
 
   return (
-    <div className="md max-w-[544px] p-4 md:w-1/2">
-      <div
-        className={`${
-          imgSrc && 'h-full'
-        }  overflow-hidden rounded-md border-2 border-gray-200 border-opacity-60 shadow-lg
-      transition-all duration-500 hover:-translate-y-1 dark:border-gray-700 dark:shadow-gray-800`}
-      >
+    <div className="md max-w-[544px] p-4 transition-transform duration-500 hover:-translate-y-1 md:w-1/2">
+      <div className={`${imgSrc && 'h-full'}  card overflow-hidden`}>
         {imgSrc &&
           (href ? (
             <Link href={href} aria-label={`Link to ${title}`}>

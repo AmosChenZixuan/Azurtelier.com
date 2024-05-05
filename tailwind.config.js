@@ -99,6 +99,15 @@ module.exports = {
           },
         },
       }),
+      boxShadow: {
+        azure: '0 0 2px 2px rgba(240, 255, 255, 0.7)',
+        purple: '0 0 2px 1px rgba(140, 140, 230,0.7)',
+      },
+    },
+  },
+  variants: {
+    extend: {
+      boxShadow: ['hover'],
     },
   },
   plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],

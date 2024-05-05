@@ -23,7 +23,7 @@ export default function DashBoard() {
         </div>
       </div>
 
-      <section className="mt-5 flex justify-between space-x-5 overflow-hidden">
+      <section className="mt-5 flex justify-between space-x-5">
         <div className={`${sm_col} ${md_row} flex-grow justify-between`}>
           <div className={`${sm_row} ${md_col}`}>
             <SpotifyPlayerBox />
