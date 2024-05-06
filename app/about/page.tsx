@@ -1,5 +1,6 @@
 'use client'
 import { Authors, allAuthors } from 'contentlayer/generated'
+import { components } from '@/components/MDXComponents'
 import { MDXLayoutRenderer } from 'pliny/mdx-components'
 import AuthorLayout from '@/layouts/AuthorLayout'
 import { coreContent, CoreContent } from 'pliny/utils/contentlayer'
@@ -29,7 +30,7 @@ export default function Page() {
     <>
       <AuthorLayout content={mainContentRef.current}>
         <TypedBios />
-        <MDXLayoutRenderer code={authorRef.current?.body.code} />
+        <MDXLayoutRenderer code={authorRef.current?.body.code} components={components} />
       </AuthorLayout>
     </>
   )
