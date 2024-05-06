@@ -15,10 +15,22 @@ This is a [Next.js](https://nextjs.org/), [Tailwind CSS](https://tailwindcss.com
 
 ## Addtional Features by Me
 
-- Internationalization. Support English and Chinese.
+- Internationalization
+  - Supports English and Chinese.
 - Customized Font
-- Spotify API displaying currently playing songs
-- Image Gallery and Previewer (Work in Progress)
+- Smart Nav Bar
+  - Hides itself and reappears by scrolling
+- Parallax Scrolling Tags
+- Spotify Status
+  - Displays currently playing song
+  - If no song is playing, displays the last played song
+- Image Viewer
+  - Supports dragging and zooming
+- Photo Gallery (Work in Progress)
+  - Responsive and compact grid of images
+  - Supports sharing and external links
+- Resume (To-Do)
+  - Timeline with cool scrolling animations
 
 ## Original Features From the Template
 
