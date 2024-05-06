@@ -7,7 +7,7 @@ interface OverlayImageProps extends ImageProps {
   useOverlay?: boolean
 }
 
-const Photo = ({ useOverlay = false, ...rest }: OverlayImageProps) => {
+const Photo = ({ useOverlay = true, ...rest }: OverlayImageProps) => {
   const { setOverlayImage, setIsOverlayVisible } = useImageOverlay()
 
   const handleClick = () => {
@@ -17,11 +17,7 @@ const Photo = ({ useOverlay = false, ...rest }: OverlayImageProps) => {
     }
   }
 
-  return (
-    <div>
-      <NextImage className="lightcone" {...rest} onClick={handleClick} />
-    </div>
-  )
+  return <NextImage className="lightcone" {...rest} onClick={handleClick} />
 }
 
 export default Photo

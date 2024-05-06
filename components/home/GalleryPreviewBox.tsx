@@ -1,5 +1,3 @@
-import Link from '@/components/Link'
-import Image from '@/components/Image'
 import Photo from '@/components/gallery/photo'
 
 export default function GalleryPreviewBox() {
@@ -13,7 +11,6 @@ export default function GalleryPreviewBox() {
         className="h-full w-full object-cover"
         width={832}
         height={1216}
-        useOverlay
       />
     </div>
   )

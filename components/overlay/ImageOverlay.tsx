@@ -71,10 +71,12 @@ const ImageViewOverlay: React.FC = () => {
         <NextImage
           src={overlayImage}
           alt="overlay"
-          objectFit="contain"
           fill
           className="mt-0 py-10"
-          style={{ transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})` }}
+          style={{
+            transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+            objectFit: 'contain',
+          }}
           onDragStart={(e) => e.preventDefault()}
         />
       </div>
