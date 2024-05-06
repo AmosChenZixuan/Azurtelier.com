@@ -13,6 +13,8 @@ import siteMetadata from '@/data/siteMetadata'
 import { ThemeProviders } from './theme-providers'
 import { Metadata } from 'next'
 import { LanguageProvider } from 'utils/locale'
+import { ImageOverlayProvider } from '@/components/overlay/providers'
+import ImageViewOverlay from '@/components/overlay/ImageOverlay'
 
 // default english text
 const pangolin = Pangolin({
@@ -108,8 +110,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <SectionContainer>
               <div className="flex h-screen flex-col justify-between font-sans">
                 <SearchProvider searchConfig={siteMetadata.search as SearchConfig}>
-                  <Header />
-                  <main className="mb-auto mt-20">{children}</main>
+                  <ImageOverlayProvider>
+                    <Header />
+                    <main className="mb-auto mt-20">{children}</main>
+                    <ImageViewOverlay />
+                  </ImageOverlayProvider>
                 </SearchProvider>
                 <Footer />
               </div>

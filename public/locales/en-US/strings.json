@@ -17,5 +17,6 @@
     "desc": "Made with 🤍 using Nextjs and Tailwind",
     "view_source": "View Source"
   },
-  "oc_title": "Original Characters"
+  "oc_title": "Original Characters",
+  "img_overlay_hint": "Hold to drag. Scroll to Zoom."
 }
