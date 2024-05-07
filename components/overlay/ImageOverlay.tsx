@@ -1,8 +1,9 @@
 'use client'
+import NextImage from 'next/image'
 import { IoClose } from 'react-icons/io5'
 import { useTranslation } from 'utils/locale'
 import { useImageOverlay } from './providers'
-import ReactiveImage from './ReactiveImage'
+import ReactiveDiv from './ReactiveDiv'
 
 const ImageViewOverlay: React.FC = () => {
   const { overlayImage, isOverlayVisible, setIsOverlayVisible } = useImageOverlay()
@@ -15,7 +16,18 @@ const ImageViewOverlay: React.FC = () => {
 
   return (
     <div className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-90">
-      <ReactiveImage imageSrc={overlayImage} isEnabled={isOverlayVisible} />
+      <ReactiveDiv isEnabled={isOverlayVisible} className="absolute left-0 right-0 top-0 h-screen">
+        <NextImage
+          src={overlayImage}
+          alt="overlay"
+          fill
+          className="mt-0 py-10"
+          style={{
+            objectFit: 'contain',
+          }}
+          onDragStart={(e) => e.preventDefault()}
+        />
+      </ReactiveDiv>
 
       <button onClick={() => setIsOverlayVisible(false)} className="absolute right-4 top-4">
         <IoClose size={30} color={'#fff'} />

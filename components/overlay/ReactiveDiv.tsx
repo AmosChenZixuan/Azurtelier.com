@@ -1,13 +1,15 @@
 'use client'
 import { useEffect, useRef, useState } from 'react'
-import NextImage from 'next/image'
 
-interface ReactiveImageProps {
-  imageSrc: string
+interface ReactiveDivProps {
   isEnabled: boolean
+  className?: string
+  children?: React.ReactNode
 }
 
-const ReactiveImage: React.FC<ReactiveImageProps> = ({ imageSrc, isEnabled }) => {
+// A container that can be dragged and zoomed. Support both mouse and touch events.
+// Restrain from creating more than one instance of this component on the same page, as the events might conflict.
+const ReactiveDiv: React.FC<ReactiveDivProps> = ({ isEnabled, className, children }) => {
   const [dragging, setDragging] = useState(false)
   const [position, setPosition] = useState({ x: 0, y: 0 })
   const [startPos, setStartPos] = useState({ x: 0, y: 0 })
@@ -123,25 +125,18 @@ const ReactiveImage: React.FC<ReactiveImageProps> = ({ imageSrc, isEnabled }) =>
   return (
     <div
       ref={ref}
-      className="absolute left-0 right-0 top-0 h-screen"
+      className={className}
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
       role="none"
+      style={{
+        transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+      }}
     >
-      <NextImage
-        src={imageSrc}
-        alt="overlay"
-        fill
-        className="mt-0 py-10"
-        style={{
-          transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
-          objectFit: 'contain',
-        }}
-        onDragStart={(e) => e.preventDefault()}
-      />
+      {children}
     </div>
   )
 }
 
-export default ReactiveImage
+export default ReactiveDiv
