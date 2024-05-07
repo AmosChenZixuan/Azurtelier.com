@@ -3,7 +3,7 @@ import Photo from '@/components/gallery/photo'
 export default function GalleryPreviewBox() {
   return (
     <div
-      className={`card bg-pink-blue-animated sticky right-0 min-w-[4rem] max-w-[25%] flex-grow overflow-hidden`}
+      className={`card bg-pink-blue-animated sticky right-0 max-w-[25%] flex-grow overflow-hidden`}
     >
       <Photo
         src="/static/gallary/art/ai/azuki/charming_smile.jpeg"
