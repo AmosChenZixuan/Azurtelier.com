@@ -4,6 +4,7 @@ import { IoClose } from 'react-icons/io5'
 import { useTranslation } from 'utils/locale'
 import { useImageOverlay } from './providers'
 import ReactiveDiv from './ReactiveDiv'
+import loader from 'utils/image'
 
 const ImageViewOverlay: React.FC = () => {
   const { overlayImage, isOverlayVisible, setIsOverlayVisible } = useImageOverlay()
@@ -18,6 +19,7 @@ const ImageViewOverlay: React.FC = () => {
     <div className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-90">
       <ReactiveDiv isEnabled={isOverlayVisible} className="absolute left-0 right-0 top-0 h-screen">
         <NextImage
+          loader={loader}
           src={overlayImage}
           alt="overlay"
           fill

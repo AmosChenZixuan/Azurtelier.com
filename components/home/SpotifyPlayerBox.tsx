@@ -6,14 +6,11 @@ import useSWR from 'swr'
 import Link from '@/components/Link'
 import Image from '@/components/Image'
 import { SongData } from '@/types/spotify'
+import loader from 'utils/image'
 
 export default function SpotifyPlayerBox() {
   const fetcher = (url) => fetch(url).then((r) => r.json())
   const { data }: { data: SongData } = useSWR('/api/spotify', fetcher)
-
-  const imageLoader = ({ src }) => {
-    return `/api/imageProxy?url=${encodeURIComponent(src)}`
-  }
 
   const limitText = (text: string, limit: number = 20) => {
     return text.length > limit ? `${text.slice(0, limit)}...` : text
@@ -26,7 +23,7 @@ export default function SpotifyPlayerBox() {
           <div className="flex flex-wrap space-x-1">
             <section className="relative m-1 h-24 w-24">
               <Image
-                loader={imageLoader}
+                loader={loader}
                 src={data.albumImageUrl}
                 alt={data.album}
                 width={375}
