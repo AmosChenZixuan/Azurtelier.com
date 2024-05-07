@@ -120,7 +120,7 @@ const ReactiveDiv: React.FC<ReactiveDivProps> = ({ isEnabled, className, childre
         element.removeEventListener('touchmove', handleTouchMove)
       }
     }
-  }, [handleTouchStart, handleTouchEnd, handleTouchMove])
+  })
 
   return (
     <div
