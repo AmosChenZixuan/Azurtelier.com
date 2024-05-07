@@ -21,5 +21,6 @@
 
   "Latest": "动态",
   "All Posts": "所有文章",
-  "img_overlay_hint": "长按可拖动。滚动可缩放。"
+  "img_overlay_hint": "长按拖动。滚动缩放。",
+  "img_overlay_hint_mobile": "长按拖动。双指缩放。"
 }

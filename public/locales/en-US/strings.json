@@ -18,5 +18,6 @@
     "view_source": "View Source"
   },
   "oc_title": "Original Characters",
-  "img_overlay_hint": "Hold to drag. Scroll to Zoom."
+  "img_overlay_hint": "Drag to move. Scroll to Zoom.",
+  "img_overlay_hint_mobile": "Drag to move. Pinch to Zoom."
 }
