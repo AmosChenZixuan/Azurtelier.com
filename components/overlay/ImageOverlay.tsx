@@ -151,7 +151,10 @@ const ImageViewOverlay: React.FC = () => {
         <IoClose size={30} color={'#fff'} />
       </button>
 
-      <h5 className="absolute bottom-1 -z-10 text-gray-200 opacity-70">{t('img_overlay_hint')}</h5>
+      <span className="absolute bottom-1 -z-10 text-gray-200 opacity-70 ">
+        <h5 className="hidden md:block">{t('img_overlay_hint')}</h5>
+        <h5 className="md:hidden">{t('img_overlay_hint_mobile')}</h5>
+      </span>
     </div>
   )
 }
