@@ -9562,6 +9562,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-responsive-masonry@npm:^2.2.0":
+  version: 2.2.0
+  resolution: "react-responsive-masonry@npm:2.2.0"
+  checksum: afe5f3994e443007c9c4cd8451dd2c2be63b71f8873f8814f1b3b7207330f70c6fa93552263e0c9913a2b3cae0001395b6f08213a37c3a92d5fef4bc8de6c5e0
+  languageName: node
+  linkType: hard
+
 "react-virtual@npm:^2.8.2":
   version: 2.10.4
   resolution: "react-virtual@npm:2.10.4"
@@ -11015,6 +11022,7 @@ __metadata:
     react-activity-calendar: ^2.2.8
     react-dom: 18.2.0
     react-icons: ^5.2.0
+    react-responsive-masonry: ^2.2.0
     reading-time: 1.5.0
     rehype-autolink-headings: ^7.1.0
     rehype-citation: ^2.0.0
