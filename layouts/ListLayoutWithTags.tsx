@@ -11,6 +11,8 @@ import Tag from '@/components/Tag'
 import tagData from 'app/tag-data.json'
 import { useTranslation, LanguageContext } from 'utils/locale'
 import { useContext } from 'react'
+import Image from '@/components/Image'
+import loader from 'utils/image'
 
 interface PaginationProps {
   totalPages: number
@@ -88,7 +90,7 @@ export default function ListLayoutWithTags({
           </h1>
         </div>
         <div className="flex sm:space-x-12">
-          <div className="card hidden h-full max-h-screen min-w-[280px] max-w-[280px] flex-wrap overflow-auto border bg-gray-50 pt-5 dark:bg-gray-900/70 sm:flex">
+          <div className="card hidden h-full max-h-screen min-w-[180px] max-w-[180px] flex-wrap overflow-auto border bg-gray-50 pt-5 dark:bg-gray-900/70 sm:flex">
             <div className="px-6 py-4">
               {pathname.startsWith('/blog') ? (
                 <h3 className="font-bold uppercase text-primary-500">{t('blog_title')}</h3>
@@ -126,10 +128,25 @@ export default function ListLayoutWithTags({
           <div className="w-full">
             <ul>
               {displayPosts.map((post) => {
-                const { path, date, title, summary, tags } = post
+                const { path, date, title, summary, tags, images } = post
+                const thumbnail = images ? images[0] : ''
                 return (
                   <li key={path} className="transform duration-300 hover:scale-[1.02]">
                     <section className="card mb-5 border p-5">
+                      <div className="bg-gray-purple h-32 w-full rounded-lg">
+                        <Link href={`/${path}`}>
+                          {thumbnail && (
+                            <Image
+                              loader={loader}
+                              src={thumbnail}
+                              alt="thumbnail"
+                              width={160}
+                              height={90}
+                              className="h-full w-full rounded-lg object-cover object-top"
+                            />
+                          )}
+                        </Link>
+                      </div>
                       <article className="flex flex-col space-y-2 xl:space-y-0">
                         <dl>
                           <dt className="sr-only">Published on</dt>
