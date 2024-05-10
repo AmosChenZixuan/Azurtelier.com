@@ -1,16 +1,1 @@
-{
-  "aigc": 2,
-  "azuki": 2,
-  "chinese": 1,
-  "english": 6,
-  "guide": 4,
-  "landscape": 1,
-  "linux": 2,
-  "note": 3,
-  "photos": 1,
-  "react": 1,
-  "stable-diffusion": 2,
-  "tailwind": 1,
-  "travel": 1,
-  "wsl": 1
-}
+{"aigc":2,"anime":1,"azuki":2,"english":4,"guide":4,"landscape":1,"linux":2,"note":3,"original":1,"photos":3,"react":1,"tailwind":1,"travel":1,"wsl":1}

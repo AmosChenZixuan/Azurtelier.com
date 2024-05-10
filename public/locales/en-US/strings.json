@@ -1,10 +1,12 @@
 {
   "menu_blog": "Blog",
   "menu_tag": "Tags",
+  "menu_album": "Album",
   "menu_projects": "Projects",
   "menu_about": "About",
   "desc_projects": "Fun stuff built with 🤍",
   "desc_about": "Publicly accessible info",
+  "desc_album": "My Blog of Photos",
   "home_title": "Azur's DigiAtelier",
   "home_desc": "Technology, Music, and AI Art",
   "label_read_more": "Read more",
