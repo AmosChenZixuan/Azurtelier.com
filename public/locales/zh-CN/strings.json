@@ -1,10 +1,12 @@
 {
   "menu_blog": "文章",
   "menu_tag": "标签",
+  "menu_album": "相册",
   "menu_projects": "项目",
   "menu_about": "关于",
   "desc_projects": "一些有趣的小玩意",
   "desc_about": "目前可以公开的情报",
+  "desc_album": "我的图片博客",
   "home_title": "阿梓的数字炼金工坊",
   "home_desc": "科技，音乐，以及AI绘画",
   "label_read_more": "让我康康",
