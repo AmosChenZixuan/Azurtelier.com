@@ -6,7 +6,12 @@ import { genPageMetadata } from 'app/seo'
 export const metadata = genPageMetadata({ title: 'Album' })
 
 export default function AlbumPage() {
-  const posts = allCoreContent(sortPosts(allBlogs, 'lastmod'))
+  const posts = allCoreContent(
+    sortPosts(
+      allBlogs.filter((post) => post.images?.length > 0),
+      'lastmod'
+    )
+  )
 
-  return <PhotoAlbumLayout posts={posts.filter((post) => post.images?.length > 0)} />
+  return <PhotoAlbumLayout posts={posts} />
 }
