@@ -1,8 +1,7 @@
 import Photo from '@/components/gallery/photo'
 
 export default function GalleryPreviewBox() {
-  const imgSrc =
-    'https://image.civitai.com/xG1nkqKTMzGDvpLrqFT7WA/ce77d24d-f83e-4753-bb9a-e11337373a14/original=true/04E5B2C2B11B877768CDA1F3850C3CEE8B3A3C1F38C4757E3A1E86640A7A72F0.jpeg'
+  const imgSrc = process.env.HOME_DISPLAY_IMG_URL || '/static/gallery/art/ai/selfie/04E5B2.jpg'
 
   return (
     <div
