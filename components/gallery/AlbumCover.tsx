@@ -1,15 +1,13 @@
-import Image from '@/components/Image'
 import { Blog } from 'contentlayer/generated'
 import Link from 'next/link'
 import Tag from '@/components/Tag'
+import Photo from './photo'
 
 interface AlbumCoverProps {
   post: Blog
 }
 
 export default function AlbumCover({ post }: AlbumCoverProps) {
-  const image = post.images[0]
-
   return (
     <div className="group relative m-2 overflow-hidden rounded-xl">
       <section className="absolute bottom-0 left-0 z-10 w-full bg-black bg-opacity-50 p-2 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -22,15 +20,15 @@ export default function AlbumCover({ post }: AlbumCoverProps) {
           ))}
         </div>
       </section>
-      <Link href={post.path}>
-        <Image
-          src={image}
-          alt={image}
-          width={1000}
-          height={1000}
-          className="transform-scale rounded-xl duration-300 group-hover:scale-[1.1]"
-        />
-      </Link>
+      <Photo
+        src=""
+        index={0}
+        imagelist={post.images}
+        alt={post.images[0]}
+        width={1000}
+        height={1000}
+        className="transform-scale rounded-xl duration-300 group-hover:scale-[1.1]"
+      />
     </div>
   )
 }

@@ -5,17 +5,26 @@ import { useImageOverlay } from '@/components/overlay/providers'
 
 interface OverlayImageProps extends ImageProps {
   useOverlay?: boolean
+  imagelist?: string[] // if imageList is provided, the src will be omitted and the imageList[index] will be used
+  index?: number
 }
 
-const Photo = ({ useOverlay = true, ...rest }: OverlayImageProps) => {
-  const { setOverlayImage, setIsOverlayVisible } = useImageOverlay()
+const Photo = ({ useOverlay = true, index = 0, ...rest }: OverlayImageProps) => {
+  const { setIsOverlayVisible, setImageList, setIndex } = useImageOverlay()
 
   const handleClick = () => {
     if (useOverlay) {
-      setOverlayImage(rest.src as string)
       setIsOverlayVisible(true)
+      setImageList(rest.imagelist as string[])
+      setIndex(index)
     }
   }
+
+  if (!rest.imagelist && !rest.src) {
+    throw new Error('Either src or imageList must be provided')
+  }
+  rest.imagelist = rest.imagelist || [rest.src as string]
+  rest.src = rest.imagelist ? rest.imagelist[index] : rest.src
 
   return <NextImage className="lightcone" {...rest} onClick={handleClick} />
 }
