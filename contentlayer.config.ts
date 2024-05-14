@@ -80,7 +80,7 @@ function createTagCount(allBlogs) {
       obj[key] = tagCount[key]
       return obj
     }, {})
-  writeFileSync('./app/tag-data.json', JSON.stringify(orderedTagCount))
+  writeFileSync('./app/tag-data.json', JSON.stringify(orderedTagCount, null, 0))
 }
 
 function createSearchIndex(allBlogs) {
