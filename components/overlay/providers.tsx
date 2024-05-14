@@ -2,21 +2,24 @@
 import React, { createContext, useState, useContext } from 'react'
 
 interface ImageOverlayContextProps {
-  overlayImage: string | null
-  setOverlayImage: React.Dispatch<React.SetStateAction<string | null>>
   isOverlayVisible: boolean
   setIsOverlayVisible: React.Dispatch<React.SetStateAction<boolean>>
+  imageList: string[] | null
+  setImageList: React.Dispatch<React.SetStateAction<string[] | null>>
+  index: number
+  setIndex: React.Dispatch<React.SetStateAction<number>>
 }
 
 export const ImageOverlayContext = createContext<ImageOverlayContextProps | undefined>(undefined)
 
 export const ImageOverlayProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [overlayImage, setOverlayImage] = useState<string | null>(null)
   const [isOverlayVisible, setIsOverlayVisible] = useState(false)
+  const [imageList, setImageList] = useState<string[] | null>(null)
+  const [index, setIndex] = useState<number>(0)
 
   return (
     <ImageOverlayContext.Provider
-      value={{ overlayImage, setOverlayImage, isOverlayVisible, setIsOverlayVisible }}
+      value={{ isOverlayVisible, setIsOverlayVisible, imageList, setImageList, index, setIndex }}
     >
       {children}
     </ImageOverlayContext.Provider>

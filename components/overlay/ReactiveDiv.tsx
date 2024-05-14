@@ -122,6 +122,16 @@ const ReactiveDiv: React.FC<ReactiveDivProps> = ({ isEnabled, className, childre
     }
   })
 
+  // reset states if children has been modified
+  useEffect(() => {
+    if (isEnabled) {
+      setDragging(false)
+      setPosition({ x: 0, y: 0 })
+      setStartPos({ x: 0, y: 0 })
+      setZoom(1)
+    }
+  }, [children])
+
   return (
     <div
       ref={ref}
