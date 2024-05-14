@@ -9,7 +9,8 @@
     "serve": "next start",
     "analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint --fix --dir pages --dir app --dir components --dir lib --dir layouts --dir scripts",
-    "prepare": "husky"
+    "prepare": "husky",
+    "compress": "node ./scripts/compress.mjs"
   },
   "dependencies": {
     "@emotion/is-prop-valid": "^1.2.2",
@@ -46,6 +47,7 @@
     "remark": "^15.0.0",
     "remark-gfm": "^4.0.0",
     "remark-math": "^6.0.0",
+    "sharp": "^0.33.3",
     "swr": "^2.2.5",
     "tailwindcss": "^3.4.3",
     "typed.js": "^2.1.0",
