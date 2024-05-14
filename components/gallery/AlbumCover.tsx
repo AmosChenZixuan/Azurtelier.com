@@ -1,4 +1,5 @@
 import { Blog } from 'contentlayer/generated'
+import { IoMdAlbums } from 'react-icons/io'
 import Link from 'next/link'
 import Tag from '@/components/Tag'
 import Photo from './photo'
@@ -10,6 +11,10 @@ interface AlbumCoverProps {
 export default function AlbumCover({ post }: AlbumCoverProps) {
   return (
     <div className="group relative m-2 overflow-hidden rounded-xl">
+      <span className="absolute right-0 top-0 z-10 flex space-x-1 rounded bg-black bg-opacity-50 p-2 transition-opacity duration-300 group-hover:opacity-100 xl:opacity-0">
+        <IoMdAlbums size={14} /> <span className="text-xs">{post.images.length}</span>
+      </span>
+
       <section className="absolute bottom-0 left-0 z-10 w-full bg-black bg-opacity-50 p-2 transition-opacity duration-300 group-hover:opacity-100 xl:opacity-0">
         <Link href={post.path}>
           <h2 className="text-lg font-bold text-primary-50">{post.title}</h2>
