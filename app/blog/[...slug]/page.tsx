@@ -10,6 +10,7 @@ import type { Authors, Blog } from 'contentlayer/generated'
 import PostSimple from '@/layouts/PostSimple'
 import PostLayout from '@/layouts/PostLayout'
 import PostBanner from '@/layouts/PostBanner'
+import PostPhotos from '@/layouts/PostLayPhotos'
 import { Metadata } from 'next'
 import siteMetadata from '@/data/siteMetadata'
 import { notFound } from 'next/navigation'
@@ -19,6 +20,7 @@ const layouts = {
   PostSimple,
   PostLayout,
   PostBanner,
+  PostPhotos,
 }
 
 export async function generateMetadata({
