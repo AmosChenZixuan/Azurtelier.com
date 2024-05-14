@@ -1,5 +1,5 @@
 'use client'
-import { ReactNode } from 'react'
+import { Key, ReactNode } from 'react'
 import { CoreContent } from 'pliny/utils/contentlayer'
 import type { Blog, Authors } from 'contentlayer/generated'
 import PostLayout from './PostLayout'
@@ -21,8 +21,16 @@ export default function PostPhotos({ content, authorDetails, next, prev, childre
       {children}
       <section className="divide-y divide-transparent">
         {images &&
-          images.map((image, i) => (
-            <Photo key={i} src={image} alt={image} width={1920} height={1024} />
+          images.map((image: string, i: number) => (
+            <Photo
+              key={i}
+              src=""
+              imagelist={images}
+              index={i}
+              alt={image}
+              width={1920}
+              height={1024}
+            />
           ))}
       </section>
     </PostLayout>
