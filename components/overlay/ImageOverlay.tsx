@@ -5,11 +5,13 @@ import { GrPrevious, GrNext } from 'react-icons/gr'
 import { useTranslation } from 'utils/locale'
 import { useImageOverlay } from './providers'
 import ReactiveDiv from './ReactiveDiv'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import Spinner from '@/components/Spinner'
 
 const ImageViewOverlay: React.FC = () => {
   const { isOverlayVisible, setIsOverlayVisible, imageList, index, setIndex } = useImageOverlay()
   const { t } = useTranslation()
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -40,15 +42,22 @@ const ImageViewOverlay: React.FC = () => {
 
   const nImages = imageList.length
   const nextImage = () => {
+    setIsLoading(true)
     setIndex((prevIndex) => (prevIndex + 1) % nImages)
   }
 
   const prevImage = () => {
+    setIsLoading(true)
     setIndex((prevIndex) => (prevIndex - 1 + nImages) % nImages)
   }
 
   return (
     <div className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-90">
+      {isLoading && (
+        <div className="absolute right-4 top-4 z-50">
+          <Spinner size={30} />
+        </div>
+      )}
       <ReactiveDiv isEnabled={isOverlayVisible} className="absolute left-0 right-0 top-0 h-screen">
         <NextImage
           src={imageList[index as number]}
@@ -59,6 +68,7 @@ const ImageViewOverlay: React.FC = () => {
             objectFit: 'contain',
           }}
           onDragStart={(e) => e.preventDefault()}
+          onLoad={() => setIsLoading(false)}
         />
       </ReactiveDiv>
 

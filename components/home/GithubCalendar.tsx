@@ -1,6 +1,7 @@
 'use client'
 import React, { useCallback, useEffect, useState } from 'react'
 import ActivityCalendar, { ThemeInput, Activity } from 'react-activity-calendar'
+import Spinner from '@/components/Spinner'
 
 const minimalTheme: ThemeInput = {
   light: ['#eee6ff', '#884dff'],
@@ -35,11 +36,7 @@ export default function GithubCalendar({ className = '' }) {
   }
 
   if (loading || !data) {
-    return (
-      <div className="flex items-center justify-center">
-        <div className="h-36 w-36 animate-spin rounded-full border-b-2 border-t-2 border-primary-500"></div>
-      </div>
-    )
+    return <Spinner />
   }
 
   return (
