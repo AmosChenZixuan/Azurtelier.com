@@ -4,9 +4,7 @@ export default function GalleryPreviewBox() {
   const imgSrc = process.env.HOME_DISPLAY_IMG_URL || '/static/gallery/art/ai/selfie/04E5B2.jpg'
 
   return (
-    <div
-      className={`card bg-pink-blue-animated sticky right-0 max-w-[25%] flex-grow overflow-hidden`}
-    >
+    <div className={`card bg-pink-blue-animated sticky right-0 flex-grow overflow-hidden`}>
       <Photo
         src={imgSrc}
         alt="azuki"

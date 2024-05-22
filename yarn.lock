@@ -4785,6 +4785,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"css-mediaquery@npm:^0.1.2":
+  version: 0.1.2
+  resolution: "css-mediaquery@npm:0.1.2"
+  checksum: 8e26ae52d8aaaa71893f82fc485363ff0fab494b7d3b3464572aaed50714b8b538d33dbdaa69f0c02cf7f80d1f4d9a77519306c0492223ce91b3987475031a69
+  languageName: node
+  linkType: hard
+
 "css-select@npm:^5.1.0":
   version: 5.1.0
   resolution: "css-select@npm:5.1.0"
@@ -6854,6 +6861,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"hyphenate-style-name@npm:^1.0.0":
+  version: 1.0.5
+  resolution: "hyphenate-style-name@npm:1.0.5"
+  checksum: 1eda2ea5bf6798cb16317edce62658791371b0e371bbf15c95f49f41c44a2c3fae42aec945be55bd1e453df13f377c20998952e1019393687f962eb42e46d6ab
+  languageName: node
+  linkType: hard
+
 "iconv-lite@npm:^0.4.4":
   version: 0.4.24
   resolution: "iconv-lite@npm:0.4.24"
@@ -7819,6 +7833,15 @@ __metadata:
   version: 3.0.3
   resolution: "markdown-table@npm:3.0.3"
   checksum: 8fcd3d9018311120fbb97115987f8b1665a603f3134c93fbecc5d1463380c8036f789e2a62c19432058829e594fff8db9ff81c88f83690b2f8ed6c074f8d9e10
+  languageName: node
+  linkType: hard
+
+"matchmediaquery@npm:^0.4.2":
+  version: 0.4.2
+  resolution: "matchmediaquery@npm:0.4.2"
+  dependencies:
+    css-mediaquery: ^0.1.2
+  checksum: 0d495dd20a4bdd4c6485c43fe9363d41de6c8cbe3bb4c259f39b885f1d2627f102ac21a759b6108a313d0dbd3445edb9847b734cff2f06b5b19fed62dbb7856f
   languageName: node
   linkType: hard
 
@@ -9668,7 +9691,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prop-types@npm:^15.8.1":
+"prop-types@npm:^15.6.1, prop-types@npm:^15.8.1":
   version: 15.8.1
   resolution: "prop-types@npm:15.8.1"
   dependencies:
@@ -9784,6 +9807,20 @@ __metadata:
   version: 2.2.0
   resolution: "react-responsive-masonry@npm:2.2.0"
   checksum: afe5f3994e443007c9c4cd8451dd2c2be63b71f8873f8814f1b3b7207330f70c6fa93552263e0c9913a2b3cae0001395b6f08213a37c3a92d5fef4bc8de6c5e0
+  languageName: node
+  linkType: hard
+
+"react-responsive@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "react-responsive@npm:10.0.0"
+  dependencies:
+    hyphenate-style-name: ^1.0.0
+    matchmediaquery: ^0.4.2
+    prop-types: ^15.6.1
+    shallow-equal: ^3.1.0
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: 49580f3fd333316704f774a241dc733506a27b23d1f397fc63e100df08a80ee4ae14cb2b2b1e2bf79e0ee2989d73761f10ec5f9e0caa208a907aee548d85818e
   languageName: node
   linkType: hard
 
@@ -10717,6 +10754,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"shallow-equal@npm:^3.1.0":
+  version: 3.1.0
+  resolution: "shallow-equal@npm:3.1.0"
+  checksum: 7eab4ae9fbd79c8913a88d6af873548b6ce619baab2e9e0a2f11696881cdaae289d51423837f6aca38de874581609c8e5e2fa052d8b79c10b55ac9fe7bd2f2f2
+  languageName: node
+  linkType: hard
+
 "sharp@npm:^0.33.3":
   version: 0.33.3
   resolution: "sharp@npm:0.33.3"
@@ -11327,6 +11371,7 @@ __metadata:
     react-activity-calendar: ^2.2.8
     react-dom: 18.2.0
     react-icons: ^5.2.0
+    react-responsive: ^10.0.0
     react-responsive-masonry: ^2.2.0
     reading-time: 1.5.0
     rehype-autolink-headings: ^7.1.0

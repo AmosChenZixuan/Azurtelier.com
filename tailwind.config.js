@@ -16,6 +16,9 @@ module.exports = {
   darkMode: 'class',
   theme: {
     extend: {
+      screens: {
+        xs: '480px',
+      },
       lineHeight: {
         11: '2.75rem',
         12: '3rem',

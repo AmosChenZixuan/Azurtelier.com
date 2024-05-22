@@ -36,6 +36,7 @@
     "react-activity-calendar": "^2.2.8",
     "react-dom": "18.2.0",
     "react-icons": "^5.2.0",
+    "react-responsive": "^10.0.0",
     "react-responsive-masonry": "^2.2.0",
     "reading-time": "1.5.0",
     "rehype-autolink-headings": "^7.1.0",
