@@ -31,7 +31,6 @@ export default function AlbumCover({ post }: AlbumCoverProps) {
         </div>
       </section>
       <Photo
-        src=""
         index={0}
         imagelist={post.images}
         alt={post.images[0]}
