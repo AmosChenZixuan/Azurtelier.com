@@ -14,6 +14,7 @@ const ImageViewOverlay: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
+    if (!isOverlayVisible) return
     const handleKeyDown = (event: KeyboardEvent) => {
       event.preventDefault() // prevent scrolling from arrow keys
       switch (event.key) {
