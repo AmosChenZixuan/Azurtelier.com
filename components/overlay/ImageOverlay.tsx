@@ -42,11 +42,13 @@ const ImageViewOverlay: React.FC = () => {
 
   const nImages = imageList.length
   const nextImage = () => {
+    if (nImages <= 1) return
     setIsLoading(true)
     setIndex((prevIndex) => (prevIndex + 1) % nImages)
   }
 
   const prevImage = () => {
+    if (nImages <= 1) return
     setIsLoading(true)
     setIndex((prevIndex) => (prevIndex - 1 + nImages) % nImages)
   }
