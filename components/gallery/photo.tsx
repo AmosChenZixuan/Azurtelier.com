@@ -11,13 +11,21 @@ interface OverlayImageProps extends Omit<ImageProps, 'src'> {
 }
 
 const Photo = ({ useOverlay = true, index = 0, ...rest }: OverlayImageProps) => {
-  const { setIsOverlayVisible, setImageList, setIndex } = useImageOverlay()
+  const {
+    setIsOverlayVisible,
+    setImageList,
+    setIndex,
+    setCallerId,
+    callerId,
+    index: overlayIndex,
+  } = useImageOverlay()
 
   const handleClick = () => {
     if (useOverlay) {
       setIsOverlayVisible(true)
       setImageList(rest.imagelist as string[])
       setIndex(index)
+      setCallerId(rest.id || '')
     }
   }
 
@@ -25,7 +33,8 @@ const Photo = ({ useOverlay = true, index = 0, ...rest }: OverlayImageProps) => 
     throw new Error('Either src or imageList must be provided')
   }
   rest.imagelist = rest.imagelist || [rest.src as string]
-  rest.src = rest.imagelist ? rest.imagelist[index] : rest.src || ''
+  const displayIndex = rest.id == callerId ? overlayIndex : index
+  rest.src = rest.imagelist[displayIndex]
 
   return <NextImage src={rest.src} className="lightcone" {...rest} onClick={handleClick} />
 }

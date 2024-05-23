@@ -11389,6 +11389,7 @@ __metadata:
     typed.js: ^2.1.0
     typescript: ^5.1.3
     unist-util-visit: ^5.0.0
+    uuid: ^9.0.1
   languageName: unknown
   linkType: soft
 

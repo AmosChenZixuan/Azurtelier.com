@@ -1,3 +1,4 @@
+import { v4 as uuidv4 } from 'uuid'
 import { Blog } from 'contentlayer/generated'
 import { IoMdAlbums } from 'react-icons/io'
 import Link from 'next/link'
@@ -31,6 +32,7 @@ export default function AlbumCover({ post }: AlbumCoverProps) {
         </div>
       </section>
       <Photo
+        id={uuidv4()}
         index={0}
         imagelist={post.images}
         alt={post.images[0]}
