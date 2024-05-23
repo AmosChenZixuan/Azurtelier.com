@@ -24,7 +24,7 @@ const Photo = ({ useOverlay = true, index = 0, ...rest }: OverlayImageProps) => 
     if (useOverlay) {
       setIsOverlayVisible(true)
       setImageList(rest.imagelist as string[])
-      setIndex(index)
+      setIndex(overlayIndex)
       setCallerId(rest.id || '')
     }
   }
