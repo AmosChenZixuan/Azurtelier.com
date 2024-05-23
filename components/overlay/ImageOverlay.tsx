@@ -57,7 +57,7 @@ const ImageViewOverlay: React.FC = () => {
   return (
     <div className="fixed inset-0 z-50 flex h-full w-full items-center justify-center bg-black bg-opacity-90">
       {isLoading && (
-        <div className="absolute right-4 top-4 z-50">
+        <div className="absolute right-4 top-4 z-10">
           <Spinner size={30} />
         </div>
       )}
@@ -75,7 +75,7 @@ const ImageViewOverlay: React.FC = () => {
         />
       </ReactiveDiv>
 
-      <button onClick={() => setIsOverlayVisible(false)} className="absolute right-4 top-4">
+      <button onClick={() => setIsOverlayVisible(false)} className="absolute right-4 top-4 z-50">
         <IoClose size={30} color={'#fff'} />
       </button>
 
