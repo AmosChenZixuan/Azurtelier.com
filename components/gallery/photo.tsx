@@ -1,5 +1,5 @@
 'use client'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NextImage, { ImageProps } from 'next/image'
 import { useImageOverlay } from '@/components/overlay/providers'
 
@@ -11,6 +11,7 @@ interface OverlayImageProps extends Omit<ImageProps, 'src'> {
 }
 
 const Photo = ({ useOverlay = true, index = 0, ...rest }: OverlayImageProps) => {
+  const [displayIndex, setDisplayIndex] = useState<number>(index)
   const {
     setIsOverlayVisible,
     setImageList,
@@ -24,7 +25,7 @@ const Photo = ({ useOverlay = true, index = 0, ...rest }: OverlayImageProps) => 
     if (useOverlay) {
       setIsOverlayVisible(true)
       setImageList(rest.imagelist as string[])
-      setIndex(overlayIndex)
+      setIndex(displayIndex)
       setCallerId(rest.id || '')
     }
   }
@@ -33,8 +34,13 @@ const Photo = ({ useOverlay = true, index = 0, ...rest }: OverlayImageProps) => 
     throw new Error('Either src or imageList must be provided')
   }
   rest.imagelist = rest.imagelist || [rest.src as string]
-  const displayIndex = rest.id == callerId ? overlayIndex : index
   rest.src = rest.imagelist[displayIndex]
+
+  useEffect(() => {
+    if (callerId == rest.id) {
+      setDisplayIndex(overlayIndex)
+    }
+  }, [overlayIndex])
 
   return <NextImage src={rest.src} className="lightcone" {...rest} onClick={handleClick} />
 }
