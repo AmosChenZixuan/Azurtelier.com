@@ -15,7 +15,7 @@ const siteMetadata = {
   github: 'https://github.com/amoschenzixuan',
   linkedin: 'https://www.linkedin.com/in/amoschenzixuan/',
   // mastodon: 'https://mastodon.social/@mastodonuser',
-  // twitter: 'https://twitter.com/Twitter',
+  twitter: 'https://twitter.com/Azurtelier',
   // facebook: 'https://facebook.com',
   // youtube: 'https://youtube.com',
   // threads: 'https://www.threads.net',
