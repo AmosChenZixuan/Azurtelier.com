@@ -1,0 +1,303 @@
+---
+title: Designing an AI Agent Gateway
+date: '2026-03-07'
+tags: ['English', 'AI', 'Agent', 'LLMOps']
+draft: false
+summary: When building AI Agent systems, most discussions focus on models and RAG. However, in real production systems the most critical layer is often the Gateway. This article explains the role of an AI Agent Gateway, the problems it solves, and a recommended architecture.
+---
+
+# Introduction
+
+When building an AI Agent system, the most common questions people ask are:
+
+- Which LLM should we use?
+- How should we build RAG?
+- How should prompts be designed?
+
+However, in real-world engineering systems, **the first problem to solve is usually not the model, but the gateway layer**.
+
+AI systems often need to integrate with multiple communication channels, such as:
+
+- WeCom (Enterprise WeChat)
+- Slack
+- Web Chat
+- API
+- CRM systems
+
+Each channel has completely different message formats. Without a unified gateway, the system quickly becomes difficult to maintain.
+
+Therefore, mature AI systems usually introduce an **Agent Gateway** as the unified entry point.
+
+---
+
+# What is an AI Agent Gateway
+
+An AI Agent Gateway can be understood as the **entry layer of an AI system**.
+
+It receives messages from different channels, converts them into a unified internal format, and then forwards them to agents or LLM services.
+
+A simplified architecture looks like this:
+
+```
+User Channels
+      │
+      ▼
+AI Gateway
+      │
+      ▼
+Agent Router
+      │
+      ▼
+AI Agent
+      │
+      ▼
+LLM / Tools
+```
+
+The goals of a gateway include:
+
+- Hiding channel-specific differences
+- Providing a unified API
+- Controlling traffic and access
+
+---
+
+# Problems the Gateway Needs to Solve
+
+Designing a gateway requires solving several key problems.
+
+## 1. Message Normalization
+
+Different platforms produce completely different message structures.
+
+Example: WeCom message
+
+```
+{
+  "msgtype": "text",
+  "content": "Hello"
+}
+```
+
+Example: Web Chat message
+
+```
+{
+  "role": "user",
+  "message": "Hello"
+}
+```
+
+If every internal module needs to support different formats, the system becomes chaotic.
+
+A gateway typically converts all incoming messages into a unified structure:
+
+```
+{
+  "user_id": "123",
+  "channel": "wecom",
+  "message": "Hello",
+  "timestamp": 1710000000
+}
+```
+
+This allows the agent layer to work with a consistent schema.
+
+---
+
+## 2. Identity and Permission Control
+
+AI systems usually interact with multiple user types, such as:
+
+- Customers
+- Internal employees
+- Administrators
+
+Each group may have different permissions.
+
+For example:
+
+- Customers can ask questions
+- Employees can access internal tools
+- Administrators can perform operational actions
+
+The gateway can handle:
+
+- User authentication
+- Permission validation
+
+This prevents unauthorized requests from entering the system.
+
+---
+
+## 3. Rate Limiting and Security
+
+AI systems often face two major risks:
+
+- Malicious requests
+- Exploding token costs
+
+Therefore, gateways often implement:
+
+- Rate limiting
+- IP restrictions
+- Token usage control
+
+Example flow:
+
+```
+User Request
+     │
+     ▼
+Rate Limit
+     │
+     ▼
+Agent
+```
+
+If requests exceed limits, they can be rejected immediately.
+
+---
+
+## 4. Logging and Observability
+
+AI systems must maintain detailed logs for several reasons:
+
+- Debugging
+- Cost analysis
+- Security auditing
+
+Typical logged information includes:
+
+```
+User message
+Model response
+Token usage
+Response latency
+```
+
+The gateway is the best place to capture this information.
+
+---
+
+# Recommended Architecture
+
+A common AI Gateway architecture might look like this:
+
+```
+Channels
+(WeCom / Slack / Web)
+        │
+        ▼
+Gateway API
+(FastAPI)
+        │
+        ▼
+Message Normalizer
+        │
+        ▼
+Router
+        │
+        ▼
+Agent
+        │
+        ▼
+LLM / Tools
+```
+
+Components:
+
+**Gateway API**
+
+Responsible for:
+
+- Receiving requests
+- Authenticating users
+- Recording logs
+
+**Message Normalizer**
+
+Responsible for:
+
+- Converting channel-specific formats
+- Creating a unified message schema
+
+**Router**
+
+Responsible for selecting:
+
+- The correct agent
+- The correct model
+- The required tools
+
+---
+
+# Technology Stack Suggestions
+
+A typical AI Gateway stack might include:
+
+| Component | Suggested Technology |
+|---|---|
+| API | FastAPI |
+| Message Queue | Redis / Kafka |
+| Logging | Postgres / ClickHouse |
+| AI Services | OpenAI / Qwen / GLM |
+| Deployment | Docker |
+
+FastAPI is particularly suitable for gateways because it:
+
+- Has high performance
+- Supports async workloads
+- Integrates well with the Python AI ecosystem
+
+---
+
+# Minimal Gateway Example
+
+A minimal gateway can be extremely simple:
+
+```python
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.post("/message")
+async def receive_message(payload: dict):
+
+    message = payload["message"]
+
+    # Call AI model
+    reply = call_llm(message)
+
+    return {
+        "reply": reply
+    }
+```
+
+In production systems, you would gradually add:
+
+- Authentication
+- Rate limiting
+- Logging
+- Routing
+
+---
+
+# Conclusion
+
+In AI Agent systems, the gateway layer is a critical component.
+
+It is responsible for:
+
+- Normalizing messages from different channels
+- Managing authentication and permissions
+- Controlling traffic and security
+- Recording logs and metrics
+
+A well-designed gateway makes AI systems:
+
+- Easier to scale
+- Easier to maintain
+- Easier to integrate with multiple channels
+
+As AI systems grow in complexity, **the gateway often becomes one of the core components of the entire AI platform**.
