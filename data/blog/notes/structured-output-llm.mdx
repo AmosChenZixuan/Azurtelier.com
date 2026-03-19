@@ -1,0 +1,630 @@
+---
+title: "Structured Output with LLMs: Validation Failure, Recovery, and Interview-Ready Best Practices"
+date: '2026-03-18'
+tags: ['English', 'AI', 'LLM', 'Agent']
+draft: false
+summary: Learn what structured output really means, why validation failure is the core production problem, and how to explain retry, fixing, fallback, and business-rule validation clearly in interviews.
+---
+
+# Structured Output in One Sentence
+
+Structured output means asking an LLM to return **machine-readable data that follows a schema**, so the result can be consumed by code instead of only by humans.
+
+If you want one interview-ready sentence, use this:
+
+> Structured output turns an LLM from a text generator into a component that can participate in software workflows, but only if its output is validated before use.
+
+That last part matters most: **LLM output should be treated like untrusted input**.
+
+---
+
+# Why We Need It
+
+Without structured output, the same request can produce many different shapes:
+
+```text
+User: Extract name and age
+
+Possible outputs:
+- John, 18
+- Name: John, Age: 18
+- {"name": "John", "age": 18}
+```
+
+Humans can understand all three. Programs cannot safely rely on all three.
+
+Structured output is what makes these workflows possible:
+
+- writing to a database
+- calling tools or APIs
+- driving an agent loop
+- handing data to downstream services
+- triggering business logic automatically
+
+In other words: if the output is going to be consumed by code, structure is not optional.
+
+---
+
+# How Structured Output Actually Works
+
+There are three layers people often mix together:
+
+## 1. Generation Constraint
+
+You tell the model what format to produce.
+
+Example:
+
+```text
+Return valid JSON with this shape:
+{
+  "name": string,
+  "age": integer
+}
+```
+
+This is a **soft constraint**. The model is still predicting tokens probabilistically.
+
+---
+
+## 2. Provider or Framework Assistance
+
+Modern model APIs and frameworks can help by:
+
+- injecting format instructions
+- using tool calling / function calling
+- supplying JSON schema
+- parsing the result into objects
+
+This raises the success rate, but it does **not** guarantee the result is safe to trust.
+
+---
+
+## 3. Validation
+
+Validation is the step that answers the real question:
+
+**Can my application safely use this output?**
+
+That is why structured output is not just "prompting for JSON". It is a pipeline:
+
+LLM output -> parse -> validate -> business checks -> consume
+
+If any stage fails, the output should not flow into your system unchecked.
+
+---
+
+# Prompting vs Function Calling vs Validation
+
+This distinction is one of the most common interview topics.
+
+## Prompting
+
+You ask for JSON or another fixed format in plain language.
+
+- simplest approach
+- cheapest to implement
+- least reliable
+
+---
+
+## Function Calling / Tool Calling
+
+You provide a schema, and the model is guided to emit structured arguments.
+
+- more reliable than raw prompting
+- better for agent systems
+- still not enough on its own
+
+Why not enough? Because format compliance is only one failure surface.
+
+---
+
+## Validation
+
+Validation checks whether the output is actually acceptable.
+
+This includes:
+
+- syntax correctness
+- schema correctness
+- semantic consistency
+- business-rule correctness
+
+This is the part many demos skip and many interviews focus on.
+
+---
+
+# Using Pydantic as the Validation Layer
+
+Pydantic is useful because it gives you a precise schema and a reliable validation step.
+
+```python
+from pydantic import BaseModel, Field
+
+
+class User(BaseModel):
+    name: str = Field(description="Full name of the user")
+    age: int = Field(ge=0, le=150)
+```
+
+This already gives you more than "does it look like JSON?":
+
+- required fields
+- types
+- numeric constraints
+- clear schema definition for both humans and code
+
+That is the core idea:
+
+**JSON parsing only checks whether the text is valid JSON. Pydantic checks whether the JSON is valid for your application.**
+
+---
+
+# Using LangChain for Structured Output
+
+LangChain is useful here because it helps connect three steps:
+
+- format instruction generation
+- model invocation
+- parsing into typed objects
+
+## Minimal Example
+
+```python
+from pydantic import BaseModel, Field
+from langchain_core.output_parsers import PydanticOutputParser
+
+
+class User(BaseModel):
+    name: str = Field(description="Full name of the user")
+    age: int = Field(ge=0, le=150)
+
+
+parser = PydanticOutputParser(pydantic_object=User)
+
+prompt = f"""
+Extract the user information from the text below.
+
+{parser.get_format_instructions()}
+
+Text: John is 18 years old.
+"""
+
+raw_output = model.invoke(prompt).content
+user = parser.parse(raw_output)
+```
+
+The important point is not the framework syntax. The important point is the flow:
+
+Schema -> instructions -> model output -> parser -> validated object
+
+---
+
+# The Real Production Problem: Validation Failure
+
+Most beginners think the hard part is "getting the model to output JSON".
+
+In practice, the hard part is:
+
+**What do you do when the output is almost right, partly wrong, or structurally correct but still unsafe?**
+
+That is what validation failure means.
+
+## A Practical Definition
+
+A validation failure happens whenever the model output cannot be safely accepted by the next system step.
+
+That includes more than broken JSON.
+
+---
+
+# The 4 Types of Validation Failure
+
+This is the section you want to be able to explain clearly in an interview.
+
+## 1. Syntax Failure
+
+The output is not even parseable.
+
+Example:
+
+```json
+{"name": "John", "age": 18
+```
+
+Problem:
+
+- invalid JSON
+- parser fails before schema validation even begins
+
+This is the easiest kind of failure to spot.
+
+---
+
+## 2. Schema Failure
+
+The output is parseable, but does not match the expected schema.
+
+Example:
+
+```json
+{"name": "John", "age": "eighteen"}
+```
+
+Possible issues:
+
+- wrong type
+- missing required field
+- extra unexpected field
+- invalid enum value
+- nested structure mismatch
+
+This is where Pydantic or another schema validator becomes essential.
+
+---
+
+## 3. Semantic Failure
+
+The output matches the schema, but the meaning is still wrong or contradictory.
+
+Example:
+
+```json
+{"start_date": "2026-05-10", "end_date": "2026-05-01"}
+```
+
+This is valid JSON.
+It may also pass basic schema validation.
+But it is logically inconsistent.
+
+Other examples:
+
+- confidence score is 1.7
+- summary says "refund approved" while status field says `"rejected"`
+- extracted country is `"Paris"`
+
+This is where many junior implementations break: they stop at schema validation and assume the data is safe.
+
+---
+
+## 4. Business-Rule Failure
+
+The output may be syntactically valid, schema-valid, and even semantically reasonable, but still unusable in the actual application.
+
+Example:
+
+```json
+{"currency": "USD", "amount": -500}
+```
+
+Maybe negative amounts are forbidden in your workflow.
+
+Another example:
+
+```json
+{"user_id": "abc123", "risk_level": "low"}
+```
+
+But your policy says risk classification must never be auto-filled when source evidence is missing.
+
+This is why interviewers often ask:
+
+> Is function calling enough?
+
+The correct answer is:
+
+> No. Function calling improves structural compliance, but it does not replace application-level validation and business rules.
+
+---
+
+# Why Validation Failure Still Happens Even with Function Calling
+
+People often overestimate what tool calling guarantees.
+
+It helps, but failures still happen because:
+
+- the model can still misunderstand the source text
+- required fields may be guessed when the source is ambiguous
+- fields can be technically valid but semantically wrong
+- business constraints live outside the schema
+- downstream systems are usually stricter than the model interface
+
+The clean mental model is:
+
+**Function calling improves format reliability. Validation determines trust.**
+
+---
+
+# A Production-Grade Handling Strategy
+
+The safest approach is a layered one.
+
+## 1. Prevent Failure Up Front
+
+Lower the failure rate before generation reaches your validator.
+
+Common prevention techniques:
+
+- keep the schema small and explicit
+- avoid ambiguous field names
+- set low temperature for extraction tasks
+- tell the model to return `null` instead of guessing
+- give one or two high-quality examples for tricky fields
+
+Important interview point:
+
+Prevention reduces cost, but it never removes the need for validation.
+
+---
+
+## 2. Validate in Layers
+
+Do not rely on a single yes/no check.
+
+A robust pipeline usually does this:
+
+1. parse syntax
+2. validate schema
+3. apply semantic checks
+4. apply business-rule checks
+
+This layered thinking is what separates a demo from a production system.
+
+---
+
+## 3. Retry with Explicit Error Feedback
+
+If the model produced something close to correct, the first recovery step is usually a retry with context.
+
+Good retry prompts include:
+
+- the validation error
+- the expected schema
+- the original source text
+- the bad previous output
+- an instruction not to invent missing information
+
+Example:
+
+```text
+The previous output failed validation.
+
+Validation error:
+- age must be an integer
+
+Return valid JSON only.
+If the source does not contain a value, use null instead of guessing.
+```
+
+This is usually better than a blind retry because it tells the model what failed.
+
+---
+
+## 4. Use Output Fixing Carefully
+
+Frameworks like LangChain provide fixing parsers that try to repair malformed output.
+
+Use them for:
+
+- missing braces
+- trailing commas
+- minor formatting damage
+- shallow schema mismatches
+
+Do not rely on them for:
+
+- factual correction
+- semantic repair
+- business-rule enforcement
+
+Interview-ready summary:
+
+> Output fixing is good for presentation-level damage, not for truth or policy correctness.
+
+---
+
+## 5. Use Defaults Only for Non-Critical Fields
+
+Defaults are useful, but dangerous when used carelessly.
+
+Reasonable use:
+
+- optional display label
+- empty tag list
+- nullable description field
+
+Dangerous use:
+
+- defaulting a missing price to `0`
+- defaulting a missing age to `18`
+- defaulting a missing risk flag to `"safe"`
+
+The rule is simple:
+
+**If a default changes business meaning, do not use it.**
+
+---
+
+## 6. Escalate or Fail Closed
+
+If retries and repair still fail, a production system should not silently continue.
+
+Typical options:
+
+- send to a stronger model
+- route to human review
+- return a structured failure object
+- stop the workflow
+
+For high-risk systems, failing closed is usually the correct choice.
+
+Examples:
+
+- finance
+- healthcare
+- legal workflows
+- security actions
+
+---
+
+# A Simple Robust Pattern in Code
+
+This is the kind of example that is useful in interviews because it shows layered thinking, not just library usage.
+
+```python
+from pydantic import BaseModel, Field, ValidationError
+
+
+class User(BaseModel):
+    name: str
+    age: int = Field(ge=0, le=150)
+
+
+def business_validate(user: User) -> User:
+    if user.age < 18:
+        raise ValueError("User must be an adult for this workflow")
+    return user
+
+
+def extract_user(text: str, model, parser) -> User:
+    prompt = f"""
+    Extract the user information.
+    Return valid JSON only.
+    If a value is missing, use null instead of guessing.
+
+    {parser.get_format_instructions()}
+
+    Text: {text}
+    """
+
+    raw = model.invoke(prompt).content
+
+    try:
+        user = parser.parse(raw)
+        return business_validate(user)
+    except (ValidationError, ValueError) as err:
+        repair_prompt = f"""
+        The previous output failed validation.
+
+        Error: {err}
+        Previous output: {raw}
+
+        Return valid JSON only.
+        Do not guess missing values.
+
+        {parser.get_format_instructions()}
+
+        Text: {text}
+        """
+        repaired = model.invoke(repair_prompt).content
+        user = parser.parse(repaired)
+        return business_validate(user)
+```
+
+What this demonstrates:
+
+- parse and validation are separate from generation
+- business validation is separate from schema validation
+- retry is guided by the actual error
+- the system does not trust first output blindly
+
+---
+
+# Retry vs Fixing vs Fallback
+
+Interviewers often ask these together, so keep the distinction crisp.
+
+## Retry
+
+Use when the model likely understood the task but formatted or typed the answer poorly.
+
+Best when:
+
+- source data exists
+- failure is recoverable
+- you can provide the exact validation error
+
+---
+
+## Output Fixing
+
+Use when the content is probably fine, but the formatting is broken.
+
+Best when:
+
+- JSON is malformed
+- brackets/quotes are damaged
+- parser failure is superficial
+
+---
+
+## Fallback
+
+Use when the main path is unreliable or exhausted.
+
+Examples:
+
+- stronger model
+- simpler extraction schema
+- regex fallback for a known stable pattern
+- human review queue
+
+The key point:
+
+Fallback is not just "try again". It is a different recovery path.
+
+---
+
+# What Interviewers Usually Want to Hear
+
+If you can explain the following clearly, you already sound much stronger than someone who only knows how to ask for JSON.
+
+## What is structured output?
+
+Structured output is using an LLM to return machine-readable data that follows a defined schema so downstream code can process it safely.
+
+---
+
+## Why is validation necessary even with function calling?
+
+Because function calling improves format compliance, but it does not guarantee factual correctness, semantic consistency, or business-rule correctness.
+
+---
+
+## What is a validation failure?
+
+A validation failure is any case where the model output cannot be safely accepted, including syntax errors, schema mismatches, semantic contradictions, and business-rule violations.
+
+---
+
+## How do you handle validation failure in production?
+
+I use a layered approach:
+
+1. reduce failure with a clear schema and constrained prompting
+2. validate syntax and schema
+3. run semantic and business checks
+4. retry with explicit validation feedback
+5. use repair or fallback if needed
+6. fail closed for high-risk workflows
+
+---
+
+## When should defaults be avoided?
+
+Defaults should be avoided when they change business meaning or hide missing critical information.
+
+---
+
+# Final Takeaways
+
+- Structured output is not just "ask for JSON".
+- JSON validity is weaker than schema validity.
+- Schema validity is weaker than semantic validity.
+- Semantic validity is weaker than business validity.
+- The hardest part is not generation. It is safe recovery when validation fails.
+
+If you remember one production rule, remember this:
+
+> Never let an LLM output cross a system boundary without validation.
