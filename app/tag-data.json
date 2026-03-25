@@ -1,18 +1,1 @@
-{
-  "aigc": 8,
-  "anime": 1,
-  "azuki": 4,
-  "english": 4,
-  "game": 3,
-  "guide": 4,
-  "landscape": 1,
-  "linux": 2,
-  "note": 3,
-  "original": 3,
-  "photos": 9,
-  "react": 1,
-  "realism": 1,
-  "tailwind": 1,
-  "travel": 1,
-  "wsl": 1
-}
+{"agent":3,"ai":3,"aigc":8,"anime":1,"azuki":4,"english":7,"game":3,"guide":4,"landscape":1,"linux":2,"llm":2,"llmops":1,"note":3,"original":3,"photos":9,"react":1,"realism":1,"system-design":1,"tailwind":1,"travel":1,"wsl":1}

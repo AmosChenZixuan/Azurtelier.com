@@ -1,0 +1,81 @@
+---
+title: Why LLM Calls Are Not Reproducible (and How to Fix It)
+date: 2026-03-25
+tags: ['English', 'AI', 'LLM', 'Agent','System Design']
+---
+
+## Why LLM Calls Are Not Reproducible
+
+LLM outputs are inherently **non-deterministic**. Even with the same prompt, results can vary across runs. While parameters like temperature introduce randomness, the problem goes deeper than sampling alone.
+
+Many engineers assume that setting `temperature = 0` guarantees deterministic output. In practice, this is **not always true**.
+
+---
+
+## Why Temperature = 0 Still Isn’t Deterministic
+
+Even with greedy decoding, identical inputs may still produce different outputs due to:
+
+- **Numerical instability**: GPU/TPU computations involve floating-point operations that are not strictly deterministic across runs or hardware  
+- **Parallelism & kernel scheduling**: small differences in execution order can lead to different token selections when probabilities are close  
+- **Model serving infrastructure**: load balancing across replicas may introduce slight differences (e.g., different hardware, quantization, or optimizations)  
+- **Token tie-breaking**: when multiple tokens have near-identical probabilities, the choice may not be stable  
+
+As a result, `temperature = 0` reduces randomness but does **not guarantee reproducibility**.
+
+---
+
+## What Makes Reproducibility Hard
+
+Beyond decoding, modern LLM systems introduce additional variability:
+
+- **Model version drift**: providers may update models silently  
+- **Context changes**: system prompts or history may differ  
+- **External dependencies**: RAG results, tools, or APIs may change over time  
+
+Replaying a request is therefore not just about re-sending a prompt.
+
+---
+
+## How to Design for Replay
+
+To enable reproducibility, you must capture the **full execution context**, including:
+
+- Prompt and system instructions  
+- Model name and version  
+- Inference parameters (temperature, top_p, etc.)  
+- Retrieved documents (for RAG)  
+- Tool inputs and outputs  
+
+A practical approach is to model each request as a **trace tree**, where each node records:
+
+```ts
+type Node = {
+  id: string;
+  parentId?: string;
+  input: any;
+  output: any;
+  metadata: {
+    model?: string;
+    tokens?: number;
+    latency?: number;
+  };
+};
+```
+
+This allows step-by-step replay and debugging.
+
+---
+
+## Snapshot vs Mock
+
+For external dependencies, two strategies are common:
+
+- Snapshot: store exact data used at runtime (e.g., retrieved docs)
+- Mock: simulate tool/API responses during replay
+
+Both aim to eliminate time-based variability.
+
+## Key Takeaway
+
+Reproducibility in LLM systems is not about rerunning the model—it is about reconstructing the original execution environment. Even with temperature = 0, true determinism is not guaranteed, so systems must be designed with observability and replay in mind.
